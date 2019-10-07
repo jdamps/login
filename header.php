@@ -5,7 +5,7 @@
 		<meta name="opis" content="opis.">
 		<meta name=viewpoint content="width=device-width, initial-scale=1">
 		<title>Wirtualna Recepcja</title>
-		<link rel="stylesheet" href="style.css">
+		<!--<link rel="stylesheet" href="style.css">-->
 	</head>
 	<body>
 	
@@ -27,7 +27,7 @@
 						<input type="password" name="haslo" placeholder="Hasło">
 						<button type="submit" name="login-submit">Zaloguj</button>
 					</form>
-					<a href="singup.php">Zarejestruj się</a>
+					<a href="./signup.php">Zarejestruj się</a>
 					<form action="includes/logout.inc.php" method="post">
 						<button type="submit" name="logout-submit">Wyloguj</button>
 					</form>
