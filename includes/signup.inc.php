@@ -33,20 +33,48 @@ if (isset($_POST['signup-submit'])) {
 		$sql = "SELECT login_klient FROM klienci WHERE login_klient=?";
 		$stmt = mysqli_stmt_init($con);
 		if (!mysqli_stmt_init($stmt, $sql)) {
-			header ("Location: ../signup.php?error=sqlerror");
+			header ("Location: ../signup.php?error=sqlerrorrrrrr");
 			exit();
 		} 
 		
 		else {
-			mysqli_stmt_bind_param($stmt, "s", $login);
-			mysqli_stmt_execute($stmt);
-			mysqli_stmt_store_result($stmt);
-			$resultCheck = mysqli_stmt_num_rows($stmt);
+			mysqli_stmt_bind_param($stmt, "s", $login); /*zwiazane z powyzszym statementem*/
+			mysqli_stmt_execute($stmt); /*execiute statement in db*/
+			mysqli_stmt_store_result($stmt); /* stores data from db and stores under variable stmt */
+			$resultCheck = mysqli_stmt_num_rows($stmt); /*how many rows we get from db as resoult - w tym przypadku jedna*/
+			if (resultChec > 0) {
+				header ("Location: ../signup.php?error=usertaken&mail=".$email);
+				exit();
+			}
+			else {
+				$sql = "INSERT INTO klienci (login_klient, email_klient, haslo_klient) VALUES (?, ?, ?) ";
+				$stmt = mysqli_stmt_init($con);
+				if (!mysqli_stmt_init($stmt, $sql)) {
+					header ("Location: ../signup.php?error=sqlerror");
+					exit();
+				} 
+				else  {
+					$hashedPwd = password_hash($haslo1, PASSWORD_DEFAULT);
+					mysqli_stmt_bind_param($stmt, "sss", $login, $email, $hashedPwd ); 
+					mysqli_stmt_execute($stmt); 
+					header ("Location: ../signup.php?success=signup");
+					exit();
+				
+	
+				}
+			}
 		
 		}
 		
 	}
+	mysqli_stmt_close($stmt);
+	mysqli_close($con);
+	
 
 }
+else { 
+		header ("Location: ../signup.php");
+		exit();
 
+}
 

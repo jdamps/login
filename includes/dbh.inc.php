@@ -1,7 +1,15 @@
 <?php
-$con=mysqli_connect("localhost","jdamps","admin123","recepcja1");
-if (mysqli_connect_errno())
-{
-echo "Błąd połączenia z
-MySQL: " . mysqli_connect_error();
+
+$servername = "localhost";
+$dbuser = "jdamps";
+$dbpasswd = "admin123";
+$dbname = "recepcja1";
+
+
+$con=mysqli_connect($servername,$dbuser,$dbpasswd,$dbname);
+
+
+if (!con) {
+	die("Connection failed: ".mysqli_connect_error());
+	
 }
