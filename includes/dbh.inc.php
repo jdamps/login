@@ -9,7 +9,7 @@ $dbname = "recepcja1";
 $con=mysqli_connect($servername,$dbuser,$dbpasswd,$dbname);
 
 
-if (!con) {
+if (!$con) {
 	die("Connection failed: ".mysqli_connect_error());
 	
 }
