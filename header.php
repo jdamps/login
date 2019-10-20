@@ -1,3 +1,8 @@
+<?php
+	session_start();
+?>
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -22,15 +27,36 @@
 					<li><a href="#">strona4</a></li>
 				</ul>
 				<div>
-					<form action="includes/login.inc.php" method="post">
-						<input type="text" name="login" placeholder="Nazwa użytkownika">
+				<?php
+					if (isset($_SESSION['uid'])) {
+						echo '<form action="includes/logout.inc.php" method="post">
+						<button type="submit" name="logout-submit">Wyloguj</button>
+					</form>';
+					}
+						else {
+						echo '<form action="includes/login.inc.php" method="post">
+						<input type="text" name="loginmail" placeholder="Login lub E-mail">
 						<input type="password" name="haslo" placeholder="Hasło">
 						<button type="submit" name="login-submit">Zaloguj</button>
 					</form>
-					<a href="./signup.php">Zarejestruj się</a>
-					<form action="includes/logout.inc.php" method="post">
-						<button type="submit" name="logout-submit">Wyloguj</button>
-					</form>
+					<a href="./signup.php">Zarejestruj się</a>';
+						}
+				
+				?>
+				
+				<?php
+					if (isset($_GET['error'])) {
+						if ($_GET['error'] == "wrongpwd") {
+							echo '<p>Hasło jest nie prawidłowe.</p>';
+						}
+						else if ($_GET['error'] == "nouser") {
+							echo '<p>Użytkownik o podanym loginie nie istnieje.</p>';
+						}
+					}
+				?>	
+				
+					
+					
 				</div>
 			</nav>	
 		</header>

@@ -6,9 +6,36 @@
 	<main>
 		<h1>------------------------------------</h1>
 		<h1>Rejestracja</h1>
+		
+		<?php
+		if (isset($_GET['error'])) {
+			if ($_GET['error'] == "emptyfields") {
+				echo '<p>Wypełnij wszystkie pola.</p>';
+			}
+			else if ($_GET['error'] == "invalidemail") {
+				echo '<p>Wprowadzony adres e-mail wydaje się być nieprawidłowy.</p>';
+			}
+			else if ($_GET['error'] == "passwordcheck") {
+				echo '<p>Hasła nie są identyczne.</p>';
+			}
+			else if ($_GET['error'] == "usertaken") {
+				echo '<p>Podany login jest niedostępny.</p>';
+			}
+			else if ($_GET['error'] == "sqlerrorr") {
+				echo '<p>Błąd łączenia z bazą.</p>';
+			}
+		
+		}
+		else if (isset($_GET['signup'])) {
+			if ($_GET['signup'] == "success") {
+			echo '<p>Konto zostało zarejestrowane.</p>';
+		}
+		}
+		?>
+		
 		<form action="includes/signup.inc.php" method="post"> 
 		<br />
-			<input type="text" name="login_klient" placeholder="Nazwa użytkownika"> 
+			<input type="text" name="login_klient" placeholder="Login"> 
 			<br />
 			<input type="text" name="email_klient" placeholder="E-mail"> 
 			<br />
