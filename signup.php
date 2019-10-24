@@ -24,6 +24,9 @@
 			else if ($_GET['error'] == "sqlerrorr") {
 				echo '<p>Błąd łączenia z bazą.</p>';
 			}
+			else if ($_GET['error'] == "boxerrorr") {
+				echo '<p>Regulamin musi zostać zaakceptowany.</p>';
+			}
 		
 		}
 		else if (isset($_GET['signup'])) {
@@ -42,6 +45,10 @@
 			<input type="password" name="haslo_klient" placeholder="Hasło"> 
 			<br />
 			<input type="password" name="haslo_klient-rep" placeholder="Powtórz Hasło"> 
+			<br />
+			<input type="checkbox" name="box" value=1 id="p1">
+			<label for="p1"> <a href="./regulamin.php"> Zaakceptuj Regulamin</a></label>
+			<br />
 			<br />
 			<button type="submit" name="signup-submit">Zarejestruj</button>
 		</form>

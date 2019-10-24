@@ -10,6 +10,7 @@ if (isset($_POST['signup-submit'])) {
 	$email = $_POST['email_klient'];
 	$haslo1 = $_POST['haslo_klient'];
 	$haslo2 = $_POST['haslo_klient-rep'];
+	$chbox = $_POST['box'];
 	
 /*gdy user nie wypelni wszystkich pol*/
 	if (empty($login) || empty($email) || empty($haslo1) || empty($haslo2)) {
@@ -26,6 +27,11 @@ if (isset($_POST['signup-submit'])) {
 	else if ($haslo1 !== $haslo2) {
 		header ("Location: ../signup.php?error=passwordcheck&uid=".$login."&mail=".$email);
 	}
+	
+/*sprawdzanie checkboxa*/
+	else if ( empty ($chbox)) {
+		header ("Location: ../signup.php?error=boxerrorr");
+	}	
 	
 /*sprawdzanie czy taki user juz istnieje*/
 	else {
