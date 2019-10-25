@@ -8,7 +8,8 @@
 	
 		<?php
 		if (isset($_SESSION['uid'])) {
-			echo '<p>Jesteś zalogowany.</p>';
+			echo '<form action="./usersession.php" method="post"></form>';
+			
 		}
 		else {
 			echo '<p>Jesteś wylogowany.</p>';

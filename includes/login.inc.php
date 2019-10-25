@@ -1,6 +1,6 @@
 <?php
 
-/*po nacisniecu zarejestruj*/
+/*po nacisniecu zaloguj*/
 if (isset($_POST['login-submit'])) {
 	
 	/*polaczenie z baza*/
@@ -41,7 +41,7 @@ if (isset($_POST['login-submit'])) {
 					$_SESSION['uid'] = $row['id_klient'];
 					$_SESSION['ulogin'] = $row['login_klient'];
 					
-					header ("Location: ../index.php?login=success");
+					header ("Location: ../usersession.php?login=success");
 					exit();
 				}
 				else {
