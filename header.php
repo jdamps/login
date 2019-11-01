@@ -30,7 +30,7 @@
 				<?php
 					if (isset($_SESSION['uid'])) {
 						echo $_SESSION['ulogin'];
-						echo '<p>Jesteś zalogowany.</p>';
+						echo ' jesteś zalogowana.';
 						echo '<form action="includes/logout.inc.php" method="post">
 						<button type="submit" name="logout-submit">Wyloguj</button>
 					</form>';
