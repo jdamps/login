@@ -20,11 +20,12 @@
 					<img src="img/logo.jpg" atl="logo"
 				</a> 
 				<ul>
-					<li><a href="index.php">Home</a></li>
-					<li><a href="#">strona1</a></li>
-					<li><a href="#">strona2</a></li>
-					<li><a href="#">strona3</a></li>
-					<li><a href="#">strona4</a></li>
+					<li><a href="index.php">Start</a></li>
+					<li><a href="#">Oferta</a></li>
+					<li><a href="#">Galeria</a></li>
+					<li><a href="#">O nas</a></li>
+					<li><a href="#">Kontakt</a></li>
+					<li><a href="#">Regulamin</a></li>
 				</ul>
 				<div>
 				<?php
@@ -41,7 +42,7 @@
 						<input type="password" name="haslo" placeholder="Hasło">
 						<button type="submit" name="login-submit">Zaloguj</button>
 					</form>
-					<a href="./signup.php">Zarejestruj się</a>';
+					<a href="./signup.php">Utwórz nowe konto</a>';
 						}
 				
 				?>

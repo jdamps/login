@@ -12,7 +12,7 @@
 			
 		}
 		else {
-			echo '<p>Jesteś wylogowany.</p>';
+			echo '<p>Jesteś wylogowana.</p>';
 		}
 		?>
 		

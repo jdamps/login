@@ -18,9 +18,6 @@ echo "<br />";
 
 $uid = $_SESSION['uid'];
 
-	echo "$uid";
-
-
 
 		if (isset($_GET['error'])) {
 			if ($_GET['error'] == "emptyfields") {
@@ -51,7 +48,7 @@ $uid = $_SESSION['uid'];
 			<input type="password" name="haslo_klient-rep" placeholder="Powtórz nowe hasło"> 
 			<br />
 			<button type="submit" name="unewpw-submit">Zmień Hasło</button>
-			<a href=./usersession.php>Powrót</a>
+			<button type="submit" formaction="./usersession.php">Powrót</button>
 		</form>
 	</main>
 	
