@@ -11,6 +11,12 @@
 			echo '<form action="./usersession.php" method="post"></form>';
 			
 		}
+		
+		if (isset($_SESSION['eid'])) {
+			echo '<form action="./employsession.php" method="post"></form>';
+			
+		}
+		
 		else {
 			echo '<p>Jesteś wylogowana.</p>';
 		}
