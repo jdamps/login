@@ -12,6 +12,11 @@
 			
 		}
 		
+		if (isset($_SESSION['aid'])) {
+			echo '<form action="./adminsession.php" method="post"></form>';
+			
+		}
+		
 		if (isset($_SESSION['eid'])) {
 			echo '<form action="./employsession.php" method="post"></form>';
 			

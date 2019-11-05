@@ -49,6 +49,43 @@ if (isset($_POST['login-submit'])) {
 					exit();
 				}			
 			}
+			
+			else {
+		
+				$sql = "SELECT * FROM pracownicy WHERE login_pracownik=? AND admintag=1;";
+				$stmt = mysqli_stmt_init($con);
+				if (!mysqli_stmt_prepare($stmt, $sql)) {
+				header ("Location: ../index.php?error=sqlerrorr");
+				exit();
+				} 
+				else {
+			
+					mysqli_stmt_bind_param($stmt, "s", $loginmail);
+					mysqli_stmt_execute($stmt);
+					$result = mysqli_stmt_get_result($stmt);
+					/*sprawdzanie czy taki uzytkownik jest w bazie*/
+					if ($row = mysqli_fetch_assoc($result)) {
+					/*sprawdzanie czy haslo sie zgadza*/
+					$checkpwd = password_verify($haslo, $row['haslo_pracownik']);
+					if ($checkpwd == false) {
+					header ("Location: ../index.php?error=wrongpwd");
+					exit();	
+					}
+						else if ($checkpwd == true) {
+						session_start();
+						$_SESSION['aid'] = $row['id_pracownik'];
+						$_SESSION['alogin'] = $row['login_pracownik'];
+					
+						header ("Location: ../adminsession.php?login=success");
+						exit();
+						}
+						else {
+							header ("Location: ../index.php?error=wrongpwd");
+							exit();
+							}			
+				}
+			
+			
 			else {
 				$sql2 = "SELECT * FROM pracownicy WHERE login_pracownik=?;";
 				$stmt2 = mysqli_stmt_init($con);
@@ -98,4 +135,5 @@ if (isset($_POST['login-submit'])) {
 	}
 }
 
-	
+}
+}

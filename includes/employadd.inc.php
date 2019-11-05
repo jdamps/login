@@ -18,14 +18,14 @@ if (isset($_POST['employ-submit'])) {
 	
 /*gdy user nie wypelni wszystkich pol*/
 	if (empty($login) || empty($haslo1) || empty($haslo2)) {
-		header ("Location: ../employadd.php?error=emptyfields");
+		header ("Location: ../adminsession.php?error=emptyfields");
 		exit();
 	}	
 	
 	
 /*sprawdzanie powtorzonego hasla*/
 	else if ($haslo1 !== $haslo2) {
-		header ("Location: ../employadd.php?error=passwordcheck");
+		header ("Location: ../adminsession.php?error=passwordcheck");
 	}
 	
 	
@@ -35,7 +35,7 @@ if (isset($_POST['employ-submit'])) {
 		$sql = "SELECT login_pracownik FROM pracownicy WHERE login_pracownik=?";
 		$stmt = mysqli_stmt_init($con);
 		if (!mysqli_stmt_prepare($stmt, $sql)) {
-			header ("Location: ../employadd.php?error=sqlerrorr");
+			header ("Location: ../adminsession.php?error=sqlerrorr");
 			exit();
 		} 
 		
@@ -45,21 +45,21 @@ if (isset($_POST['employ-submit'])) {
 			mysqli_stmt_store_result($stmt); /* stores data from db and stores under variable stmt */
 			$resultCheck = mysqli_stmt_num_rows($stmt); /*how many rows we get from db as resoult - w tym przypadku jedna*/
 			if ($resultCheck > 0) {
-				header ("Location: ../employadd.php?error=usertaken");
+				header ("Location: ../adminsession.php?error=usertaken");
 				exit();
 			}
 			else {
 				$sql = "INSERT INTO pracownicy (login_pracownik, haslo_pracownik, imie_pracownik, nazwisko_pracownik, tel_pracownik, opis_pracownik) VALUES (?, ?, ?, ?, ?, ?) ";
 				$stmt = mysqli_stmt_init($con);
 				if (!mysqli_stmt_prepare($stmt, $sql)) {
-					header ("Location: ../employadd.php?error=sqlerror");
+					header ("Location: ../adminsession.php?error=sqlerror");
 					exit();
 				} 
 				else  {
 					$hashedPwd = password_hash($haslo1, PASSWORD_DEFAULT);
 					mysqli_stmt_bind_param($stmt, "ssssds", $login, $hashedPwd, $imie, $nazwisko, $tel, $opis); 
 					mysqli_stmt_execute($stmt); 
-					header ("Location: ../employadd.php?signup=success");
+					header ("Location: ../adminsession.php?signup=success");
 					exit();
 				
 	
@@ -75,7 +75,7 @@ if (isset($_POST['employ-submit'])) {
 
 }
 else { 
-		header ("Location: ../employadd.php");
+		header ("Location: ../adminsession.php");
 		exit();
 
 }
