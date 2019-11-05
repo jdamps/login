@@ -9,6 +9,11 @@ if (isset($_POST['employ-submit'])) {
 	$login = $_POST['login_pracownik'];
 	$haslo1 = $_POST['haslo_pracownik'];
 	$haslo2 = $_POST['haslo_pracownik-rep'];
+	$imie = $_POST['imie_pracownik'];
+	$nazwisko = $_POST['nazwisko_pracownik'];
+	$tel = $_POST['tel_pracownik'];
+	$opis = $_POST['opis_pracownik'];
+	
 	
 	
 /*gdy user nie wypelni wszystkich pol*/
@@ -44,7 +49,7 @@ if (isset($_POST['employ-submit'])) {
 				exit();
 			}
 			else {
-				$sql = "INSERT INTO pracownicy (login_pracownik, haslo_pracownik) VALUES (?, ?) ";
+				$sql = "INSERT INTO pracownicy (login_pracownik, haslo_pracownik, imie_pracownik, nazwisko_pracownik, tel_pracownik, opis_pracownik) VALUES (?, ?, ?, ?, ?, ?) ";
 				$stmt = mysqli_stmt_init($con);
 				if (!mysqli_stmt_prepare($stmt, $sql)) {
 					header ("Location: ../employadd.php?error=sqlerror");
@@ -52,7 +57,7 @@ if (isset($_POST['employ-submit'])) {
 				} 
 				else  {
 					$hashedPwd = password_hash($haslo1, PASSWORD_DEFAULT);
-					mysqli_stmt_bind_param($stmt, "ss", $login, $hashedPwd); 
+					mysqli_stmt_bind_param($stmt, "ssssds", $login, $hashedPwd, $imie, $nazwisko, $tel, $opis); 
 					mysqli_stmt_execute($stmt); 
 					header ("Location: ../employadd.php?signup=success");
 					exit();
