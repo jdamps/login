@@ -52,6 +52,27 @@ if (isset($_POST['signup-submit'])) {
 				header ("Location: ../signup.php?error=usertaken&mail=".$email);
 				exit();
 			}
+			
+					else {
+		
+					$sql = "SELECT login_pracownik FROM pracownicy WHERE login_pracownik=?";
+					$stmt = mysqli_stmt_init($con);
+					if (!mysqli_stmt_prepare($stmt, $sql)) {
+					header ("Location: ../signup.php?error=sqlerrorr");
+					exit();
+					} 
+		
+					else {
+					mysqli_stmt_bind_param($stmt, "s", $login); /*zwiazane z powyzszym statementem*/
+					mysqli_stmt_execute($stmt); /*execiute statement in db*/
+					mysqli_stmt_store_result($stmt); /* stores data from db and stores under variable stmt */
+					$resultCheck = mysqli_stmt_num_rows($stmt); /*how many rows we get from db as resoult - w tym przypadku jedna*/
+					if ($resultCheck > 0) {
+						header ("Location: ../signup.php?error=usertaken&mail=".$email);
+						exit();
+					}
+			
+			
 			else {
 				$sql = "INSERT INTO klienci (login_klient, email_klient, haslo_klient) VALUES (?, ?, ?) ";
 				$stmt = mysqli_stmt_init($con);
@@ -77,6 +98,8 @@ if (isset($_POST['signup-submit'])) {
 	mysqli_close($con);
 	
 
+}
+	}
 }
 else { 
 		header ("Location: ../signup.php");

@@ -116,7 +116,7 @@ mysqli_close($con);
 			<br />
 			<input type="text" name="tel_pracownik" placeholder="Telefon"> 
 			<br />
-			<input type="text" name="opis_pracownik" placeholder="Opis"> 
+			<textarea cols="18" rows="5" type="text" name="opis_pracownik"></textarea> 
 			<br />
 			<button type="submit" name="employ-submit">Dodaj Pracownika</button>
 		</form>
