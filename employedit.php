@@ -19,12 +19,15 @@ mysqli_close($con);
 }
 ?>
 
+<main>
+
 <?php
 
 require './includes/dbh.inc.php';
 
 
 $sql = "SELECT * FROM pracownicy WHERE id_pracownik='$_GET[id]'";
+
 
 $records = mysqli_query($con,$sql);
 
@@ -33,11 +36,14 @@ $records = mysqli_query($con,$sql);
 	
 	<?php
 	while($row = mysqli_fetch_assoc($records))
-	{
-		echo "<tr><form method=POST action=includes/employupdate.php>";
 		
+		
+	{
+		echo "<tr><form method=POST action=includes/employupdate.inc.php>";
 		echo "<br />";
+		echo "Edycja danych dla pracownika ";
 		echo "<td><input type=text readonly=readonly name=login_pracownik value='".$row['login_pracownik']."'></td>";
+		echo "</br >";
 		echo "</br >";
 		echo "Imię:";
 		echo "</br >";
@@ -60,13 +66,10 @@ $records = mysqli_query($con,$sql);
 		echo "<button type=submit formaction=./adminsession.php>Powrót</button>";
 		echo "</form></tr>";
 		
-
-		
 	}
 	
-	
-	
 	?>
+	
 	
 <?php
 	require "footer.php";

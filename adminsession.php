@@ -79,7 +79,7 @@ require './includes/dbh.inc.php';
 
 
 if ($records=mysqli_query($con,"SELECT * FROM pracownicy"))
-	echo "<table width='600' border='1' cellpadding='1' cellspacing='1'>";
+	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
 	echo "<th>ID</th>";
 	echo "<th>Login</th>";
 	echo "<th>Imię</th>";
@@ -87,6 +87,7 @@ if ($records=mysqli_query($con,"SELECT * FROM pracownicy"))
 	echo "<th>Telefon</th>";
 	echo "<th>Opis</th>";
 	echo "<th>Edytuj</th>";
+	echo "<th>Hasło</th>";
 	echo "<th>Usuń</th>";
 	
 	while($pk=mysqli_fetch_assoc($records)){
@@ -100,12 +101,14 @@ if ($records=mysqli_query($con,"SELECT * FROM pracownicy"))
 	echo "<td>".$pk['tel_pracownik']."</td>";
 	echo "<td>".$pk['opis_pracownik']."</td>";
 	echo "<td><a href=employedit.php?id=".$pk['id_pracownik'].">Edytuj</a></td>";
+	echo "<td><a href=employpwedit.php?id=".$pk['id_pracownik'].">Zmień</a></td>";
 	echo "<td><a href=includes/employdelete.inc.php?id=".$pk['id_pracownik'].">Usuń</a></td>";
 	echo "</form>";
 	echo "</tr>";
 	
 	
 }
+
 
 
 ?>
