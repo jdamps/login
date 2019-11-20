@@ -2,10 +2,17 @@
 	require "header.php";
 ?>
 
+<?php
+	require "header3.php";
+?>
+
 <main>
--------------------------------------------
+<main>
+<div class = "mt-5">
+		<div class="container bg-light">
+		<div class="mx-auto" style="width: 200px;">
 <br />
-Zmiana hasła
+<h3>Zmiana Hasła</h3>
 
 
 <?php
@@ -13,7 +20,7 @@ Zmiana hasła
 if (isset($_SESSION['uid'])) {
 	
 require 'includes/dbh.inc.php';
-echo "<br />";
+
 
 
 $uid = $_SESSION['uid'];
@@ -49,6 +56,8 @@ $uid = $_SESSION['uid'];
 			<br />
 			<button type="submit" name="unewpw-submit">Zmień Hasło</button>
 			<button type="submit" formaction="./usersession.php">Powrót</button>
+			<br />
+			<br />
 		</form>
 	</main>
 	

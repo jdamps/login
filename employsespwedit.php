@@ -1,11 +1,15 @@
 <?php
 	require "header.php";
 ?>
+<?php
+	require "header4.php";
+?>
 
 <main>
--------------------------------------------
-<br />
-Zmiana hasła
+<div class = "mt-3">
+		<div class="container bg-light">
+		<div class="mx-auto" style="width: 200px;">
+<h3>Zmiana Hasła</h3>
 
 
 <?php
@@ -13,7 +17,7 @@ Zmiana hasła
 if (isset($_SESSION['eid'])) {
 	
 require 'includes/dbh.inc.php';
-echo "<br />";
+
 
 
 $eid = $_SESSION['eid'];
@@ -42,13 +46,15 @@ $eid = $_SESSION['eid'];
 		
 		<form action="includes/employsespwedit.inc.php" method="post"> 
 			<input type="hidden" name="eid" value="<?php echo $eid; ?>">
-		<br />
+
 			<input type="password" name="haslo_pracownik" placeholder="Wpisz nowe hasło"> 
 			<br />
 			<input type="password" name="haslo_pracownik-rep" placeholder="Powtórz nowe hasło"> 
 			<br />
 			<button type="submit" name="enewpw-submit">Zmień Hasło</button>
 			<button type="submit" formaction="./employsession.php">Powrót</button>
+			<br />
+			<br />
 		</form>
 	</main>
 	

@@ -1,15 +1,20 @@
 <?php
 require "header.php";
 ?>
+<?php
+require "header4.php";
+?>
 
 <main>
+<div class = "mt-3">
+		<div class="container bg-light">
+		<div class="mx-auto" style="width: 200px;">
 <?php
 
 if (isset($_SESSION['eid'])) {
 	
 require 'includes/dbh.inc.php';
-echo "<br />";
-echo "to jest sesja pracownika";
+
 
 
 $eid = $_SESSION['eid'];
@@ -23,7 +28,7 @@ if ($records=mysqli_query($con,"SELECT * FROM pracownicy WHERE id_pracownik=".$e
 	echo "<tr><form method=POST action=includes/employsesupdate.inc.php>";
 	echo "<tr>"; 
 	echo "<br />";
-	echo "Twoje Dane:";
+	echo "<h4>Twoje Dane:</h4>";
 	echo "<td><input type=text readonly=readonly name=login_pracownik value='".$pk['login_pracownik']."'></td>";
 
 	echo "<br />";
@@ -51,12 +56,8 @@ if ($records=mysqli_query($con,"SELECT * FROM pracownicy WHERE id_pracownik=".$e
 	echo "<button type=submit name=pracownik-submit>Dodaj/Zmień</button>";
 	echo "<br />";
 	echo "</tr>";
-	echo "<br />";
-	echo '<a href="./employsespwedit.php">Zmień hasło</a>';
-	echo "<br />";
-	echo "<a href=strona>Moje wizyty</a>";
-	echo "<br />";
 	
+		echo "<br />";
 	
 	
 }

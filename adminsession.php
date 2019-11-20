@@ -12,8 +12,7 @@ require "header2.php";
 if (isset($_SESSION['aid'])) {
 	
 require 'includes/dbh.inc.php';
-echo "<br />";
-echo "to jest sesja admina";
+
 
 
 $eid = $_SESSION['aid'];
@@ -23,37 +22,48 @@ mysqli_close($con);
 
 }
 ?>
-
 <main>
-<h1>------------------------------------</h1>
-<h1>NOWY PRACOWNIK</h1>
+<div class = "ml-2 mr-5 mt-3">
+
+
+
+
+<h3>NOWY PRACOWNIK</h3>
+
+
 
 		<?php
 		if (isset($_GET['error'])) {
 			if ($_GET['error'] == "emptyfields") {
-				echo '<p>Wypełnij wszystkie pola oznaczone gwiazdką.</p>';
+				echo '<div class="alert alert-danger" role="alert">Wypełnij wszystkie pola oznaczone gwiazdką.</div>';
 			}
 			else if ($_GET['error'] == "invalidemail") {
-				echo '<p>Wprowadzony adres e-mail wydaje się być nieprawidłowy.</p>';
+				echo '<div class="alert alert-danger" role="alert">Wprowadzony adres e-mail wydaje się być nieprawidłowy.</div>';
 			}
 			else if ($_GET['error'] == "passwordcheck") {
-				echo '<p>Hasła nie są identyczne.</p>';
+				echo '<div class="alert alert-danger" role="alert">Hasła nie są identyczne.</div>';
 			}
 			else if ($_GET['error'] == "usertaken") {
-				echo '<p>Podany login jest niedostępny.</p>';
+				echo '<div class="alert alert-danger" role="alert">Podany login jest niedostępny.</div>';
 			}
 			else if ($_GET['error'] == "sqlerrorr") {
-				echo '<p>Błąd łączenia z bazą.</p>';
+				echo '<div class="alert alert-danger" role="alert">Błąd łączenia z bazą.</div>';
 			}
 
 		
 		}
 		else if (isset($_GET['signup'])) {
 			if ($_GET['signup'] == "success") {
-			echo '<p>Konto zostało zarejestrowane.</p>';
+			echo '<div class="alert alert-info" role="alert">Konto zostało zarejestrowane.</div>';
+		}
+		else if (isset($_GET['pw'])) {
+			if ($_GET['success'] == "pw") {
+			echo '<div class="alert alert-info" role="alert">Konto zostało zarejestrowane.</div>';
+		}
 		}
 		}
 		?>
+
 
 		<form action="includes/employadd.inc.php" method="post"> 
 			<input type="text" name="login_pracownik" placeholder="Login">*
@@ -71,11 +81,15 @@ mysqli_close($con);
 			<textarea cols="18" rows="5" type="text" name="opis_pracownik"></textarea> 
 			<br />
 			<button type="submit" name="employ-submit">Dodaj Pracownika</button>
+			<br />
 		</form>
-	</main>
 
-<h1>------------------------------------</h1>
-<h1>PRACOWNICY</h1>
+
+
+<br />
+
+
+<h3>PRACOWNICY</h3>
 
 <?php
 
@@ -116,3 +130,6 @@ if ($records=mysqli_query($con,"SELECT * FROM pracownicy"))
 
 
 ?>
+
+</div>
+</main>

@@ -41,7 +41,7 @@ if (isset($_POST['enewpw-submit'])) {
 					$hashedPwd = password_hash($haslo1, PASSWORD_DEFAULT);
 					mysqli_stmt_bind_param($stmt, "s", $hashedPwd ); 
 					mysqli_stmt_execute($stmt); 
-					header ("Location: ../adminsession.php?pwchange=success");
+					header ("Location: ../adminsession.php?pw=success");
 					exit();
 				
 	

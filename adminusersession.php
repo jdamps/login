@@ -12,8 +12,7 @@ require "header2.php";
 if (isset($_SESSION['aid'])) {
 	
 require 'includes/dbh.inc.php';
-echo "<br />";
-echo "to jest sesja admina dla klientów";
+
 
 
 $eid = $_SESSION['aid'];
@@ -25,33 +24,33 @@ mysqli_close($con);
 ?>
 
 <main>
+<div class = "ml-2 mr-5 mt-3">
 
-<h1>------------------------------------</h1>
-<h1>NOWY KLIENT</h1>
+<h3>NOWY KLIENT</h3>
 
 		<?php
 		if (isset($_GET['error'])) {
 			if ($_GET['error'] == "emptyfields") {
-				echo '<p>Wypełnij wszystkie pola oznaczone gwiazdką.</p>';
+				echo '<div class="alert alert-danger" role="alert">Wypełnij wszystkie pola oznaczone gwiazdką.</div>';
 			}
 			else if ($_GET['error'] == "invalidemail") {
-				echo '<p>Wprowadzony adres e-mail wydaje się być nieprawidłowy.</p>';
+				echo '<div class="alert alert-danger" role="alert">Wprowadzony adres e-mail wydaje się być nieprawidłowy.</div>';
 			}
 			else if ($_GET['error'] == "passwordcheck") {
-				echo '<p>Hasła nie są identyczne.</p>';
+				echo '<div class="alert alert-danger" role="alert">Hasła nie są identyczne.</div>';
 			}
 			else if ($_GET['error'] == "usertaken") {
-				echo '<p>Podany login jest niedostępny.</p>';
+				echo '<div class="alert alert-danger" role="alert">Podany login jest niedostępny.</div>';
 			}
 			else if ($_GET['error'] == "sqlerrorr") {
-				echo '<p>Błąd łączenia z bazą.</p>';
+				echo '<div class="alert alert-danger" role="alert">Błąd łączenia z bazą.</div>';
 			}
 
 		
 		}
 		else if (isset($_GET['signup'])) {
 			if ($_GET['signup'] == "success") {
-			echo '<p>Konto zostało zarejestrowane.</p>';
+			echo '<div class="alert alert-info" role="alert">Konto zostało zarejestrowane.</div>';
 		}
 		}
 		?>
@@ -73,13 +72,13 @@ mysqli_close($con);
 			<br />
 			<button type="submit" name="user-submit">Dodaj Klienta</button>
 		</form>
-	</main>
+
 
 <h1>------------------------------------</h1>
 <h1>tu będzie szukajka</h1>
 
 <h1>------------------------------------</h1>
-<h1>KLIENCI</h1>
+<h3>KLIENCI</h3>
 
 <?php
 
@@ -120,3 +119,6 @@ if ($records=mysqli_query($con,"SELECT * FROM klienci"))
 
 
 ?>
+
+</div>
+</main>

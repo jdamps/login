@@ -19,11 +19,12 @@
 	<body>
 	
 		<header>
-		<nav class="navbar navbar-dark text-white" style="background-color: #d0b0d9;">
-		<a class="logo" href="index.php">
-		<img src="img/logo1.jpg" atl="logo">
-		</a> 
-		<ul class="nav">
+	
+		<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+				<a class="logo" href="index.php">
+					<img src="img/logo1.jpg" atl="logo"
+				</a> 
+				<ul class="nav">
 		<li class="nav-item">
 		<a class="nav-link" href="index.php">Start</a>
 		</li>
@@ -46,25 +47,22 @@
 				<?php
 					if (isset($_SESSION['uid'])) {
 						echo $_SESSION['ulogin'];
-						echo ' jesteś zalogowana';
+						echo ' jesteś zalogowana.';
 						echo '<form action="includes/logout.inc.php" method="post">
 						<button type="submit" name="logout-submit">Wyloguj</button>
 					</form>';
 					}
-	
-						
-						else if (isset($_SESSION['eid'])) {
+						if (isset($_SESSION['eid'])) {
 						echo $_SESSION['elogin'];
-						echo ' jesteś zalogowana';
+						echo ' jesteś zalogowana.';
 						echo '<form action="includes/logout.inc.php" method="post">
 						<button type="submit" name="logout-submit">Wyloguj</button>
 					</form>';
 						}
 						
-						
-						else if (isset($_SESSION['aid'])) {
+						if (isset($_SESSION['aid'])) {
 						echo $_SESSION['alogin'];
-						echo ' jesteś zalogowana';
+						echo ' jesteś zalogowana.';
 						echo '<form action="includes/logout.inc.php" method="post">
 						<button type="submit" name="logout-submit">Wyloguj</button>
 					</form>';

@@ -1,14 +1,16 @@
 <?php
 	require "header.php";
 ?>
+<?php
+require "header2.php";
+?>
 
 <?php
 
 if (isset($_SESSION['aid'])) {
 	
 require 'includes/dbh.inc.php';
-echo "<br />";
-echo "to jest sesja admina";
+
 
 
 $eid = $_SESSION['aid'];
@@ -20,6 +22,9 @@ mysqli_close($con);
 ?>
 
 <main>
+<div class = "mt-5">
+		<div class="container bg-light">
+		<div class="mx-auto" style="width: 200px;">
 
 <?php
 
@@ -41,7 +46,7 @@ $records = mysqli_query($con,$sql);
 	{
 		echo "<tr><form method=POST action=includes/employupdate.inc.php>";
 		echo "<br />";
-		echo "Edycja danych dla pracownika ";
+		echo "<h4>Edycja danych dla:</h4> ";
 		echo "<td><input type=text readonly=readonly name=login_pracownik value='".$row['login_pracownik']."'></td>";
 		echo "</br >";
 		echo "</br >";

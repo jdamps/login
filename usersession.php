@@ -2,13 +2,21 @@
 require "header.php";
 ?>
 
+<?php
+	require "header3.php";
+?>
+
 <main>
+<div class = "mt-3">
+		<div class="container bg-light">
+		<div class="mx-auto" style="width: 200px;">
+
 <?php
 
 if (isset($_SESSION['uid'])) {
 	
 require 'includes/dbh.inc.php';
-echo "<br />";
+
 
 
 $uid = $_SESSION['uid'];
@@ -21,7 +29,7 @@ if ($records=mysqli_query($con,"SELECT * FROM klienci WHERE id_klient=".$uid));
 	echo "<tr><form method=POST action=includes/userupdate.inc.php>";
 	echo "<tr>"; 
 	echo "<br />";
-	echo "Twoje Dane:";
+	echo "<h4>Twoje Dane:</h4>";
 	echo "<td><input type=text readonly=readonly size=5 name=login_klient value='".$pk['login_klient']."'></td>";
 
 	echo "<br />";
@@ -47,12 +55,7 @@ if ($records=mysqli_query($con,"SELECT * FROM klienci WHERE id_klient=".$uid));
 	echo "<br />";
 	echo "</tr>";
 	echo "<br />";
-	echo '<a href="./userpwedit.php">Zmień hasło</a>';
-	echo "<br />";
-	echo '<a href="./userdelete.php">Usuń Konto</a>';
-	echo "<br />";
-	echo "<a href=strona>Moje wizyty</a>";
-	echo "<br />";
+	
 	
 	
 	

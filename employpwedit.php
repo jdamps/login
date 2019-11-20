@@ -1,30 +1,24 @@
 <?php
 	require "header.php";
 ?>
+<?php
+require "header2.php";
+?>
 
 <main>
--------------------------------------------
-<br />
-Zmiana hasła dla pracownika 
+<div class = "mt-5">
+		<div class="container bg-light">
+		<div class="mx-auto" style="width: 200px;">
+<h4>Zmiana hasła dla</h4>
 
 <?php
-
 require './includes/dbh.inc.php';
-
-
 $sql = "SELECT * FROM pracownicy WHERE id_pracownik='$_GET[id]'";
-
-
-
 $records = mysqli_query($con,$sql);
-
 $eid = "$_GET[id]";
-
 while($pk=mysqli_fetch_assoc($records)){
-	
 	echo "<td>".$pk['login_pracownik']."</td>";
 }
-
 ?>
 
 
@@ -44,7 +38,7 @@ while($pk=mysqli_fetch_assoc($records)){
 			}
 		
 		}
-		else if (isset($_GET['enewpw-submi'])) {
+		else if (isset($_GET['enewpw-submit'])) {
 			if ($_GET['enewpw-submi'] == "success") {
 			echo '<p>Hasło zostało poprawnie zmienione.</p>';
 		}

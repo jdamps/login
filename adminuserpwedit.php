@@ -7,9 +7,10 @@
 ?>
 
 <main>
--------------------------------------------
-<br />
-Zmiana hasła dla klienta 
+<div class = "mt-5">
+		<div class="container bg-light">
+		<div class="mx-auto" style="width: 200px;">
+<h4>Zmiana hasła dla</h4>
 
 <?php
 

@@ -4,7 +4,9 @@
 
 
 	<main>
-		<h1>------------------------------------</h1>
+		<div class = "mt-5">
+		<div class="container bg-light">
+		<div class="mx-auto" style="width: 200px;">
 		<h1>Rejestracja</h1>
 		
 		<?php
@@ -52,6 +54,8 @@
 			<br />
 			<button type="submit" name="signup-submit">Zarejestruj</button>
 		</form>
+		</div>
+		</div>
 	</main>
 	
 	
