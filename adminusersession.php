@@ -2,9 +2,7 @@
 require "header.php";
 ?>
 
-<?php
-require "header2.php";
-?>
+
 
 <main>
 <?php
@@ -20,6 +18,20 @@ $eid = $_SESSION['aid'];
 
 mysqli_close($con);
 
+require "header2.php";
+
+
+
+}
+else if (isset($_SESSION['eid'])) {
+	
+require 'includes/dbh.inc.php';
+
+
+$eid = $_SESSION['eid'];
+
+
+require "header4.php";
 }
 ?>
 

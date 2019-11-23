@@ -5,21 +5,12 @@
 require "header2.php";
 ?>
 
-<?php
-
-if (isset($_SESSION['aid'])) {
-	
-require 'includes/dbh.inc.php';
 
 
 
-$eid = $_SESSION['aid'];
 
 
-mysqli_close($con);
 
-}
-?>
 
 <main>
 <div class = "mt-5">

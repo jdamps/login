@@ -17,7 +17,7 @@
   <a class="nav-item nav-link" href="adminsession.php">Pracownicy</a>
   <a class="nav-item nav-link" href="adminusersession.php">Klienci</a>
   <a class="nav-item nav-link" href="#">Wizyty</a>
-  <a class="nav-item nav-link" href="#">Zabiegi</a>
+  <a class="nav-item nav-link" href="zabiegi.php">Zabiegi</a>
 </nav>
 
 		<!--JavaScript at end of body for optimized loading-->

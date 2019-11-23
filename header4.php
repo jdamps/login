@@ -16,8 +16,9 @@
 		<nav class="nav nav-pills" style="background-color: #f2e9f5;">
   <a class="nav-item nav-link" href="employsession.php">Moje Konto</a>
   <a class="nav-item nav-link" href="employsespwedit.php">Zmiana Hasła</a>
-  <a class="nav-item nav-link" href="adminusersession4.php">Klienci</a>
+  <a class="nav-item nav-link" href="adminusersession.php">Klienci</a>
   <a class="nav-item nav-link" href="#">Wizyty</a>
+  <a class="nav-item nav-link" href="zabiegi.php">Zabiegi</a>
 
 </nav>
 
