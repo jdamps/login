@@ -18,14 +18,14 @@ if (isset($_POST['user-submit'])) {
 	
 /*gdy user nie wypelni wszystkich pol*/
 	if (empty($login) || empty($haslo1) || empty($haslo2)) {
-		header ("Location: ../adminusersession.php?error=emptyfields");
+		header ("Location: ../useradd.php?error=emptyfields");
 		exit();
 	}	
 	
 	
 /*sprawdzanie powtorzonego hasla*/
 	else if ($haslo1 !== $haslo2) {
-		header ("Location: ../adminusersession.php?error=passwordcheck");
+		header ("Location: ../useradd.php?error=passwordcheck");
 	}
 	
 	
@@ -35,7 +35,7 @@ if (isset($_POST['user-submit'])) {
 		$sql = "SELECT login_klient FROM klienci WHERE login_klient=?";
 		$stmt = mysqli_stmt_init($con);
 		if (!mysqli_stmt_prepare($stmt, $sql)) {
-			header ("Location: ../adminusersession.php?error=sqlerrorr");
+			header ("Location: ../useradd.php?error=sqlerrorr");
 			exit();
 		} 
 		
@@ -45,21 +45,21 @@ if (isset($_POST['user-submit'])) {
 			mysqli_stmt_store_result($stmt); /* stores data from db and stores under variable stmt */
 			$resultCheck = mysqli_stmt_num_rows($stmt); /*how many rows we get from db as resoult - w tym przypadku jedna*/
 			if ($resultCheck > 0) {
-				header ("Location: ../adminusersession.php?error=usertaken");
+				header ("Location: ../useradd.php?error=usertaken");
 				exit();
 			}
 			else {
 				$sql = "INSERT INTO klienci (login_klient, haslo_klient, imie_klient, nazwisko_klient, email_klient, tel_klient) VALUES (?, ?, ?, ?, ?, ?) ";
 				$stmt = mysqli_stmt_init($con);
 				if (!mysqli_stmt_prepare($stmt, $sql)) {
-					header ("Location: ../adminusersession.php?error=sqlerror");
+					header ("Location: ../useradd.php?error=sqlerror");
 					exit();
 				} 
 				else  {
 					$hashedPwd = password_hash($haslo1, PASSWORD_DEFAULT);
 					mysqli_stmt_bind_param($stmt, "sssssd", $login, $hashedPwd, $imie, $nazwisko, $tel, $opis); 
 					mysqli_stmt_execute($stmt); 
-					header ("Location: ../adminusersession.php?signup=success");
+					header ("Location: ../useradd.php?signup=success");
 					exit();
 				
 	
