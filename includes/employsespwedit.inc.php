@@ -37,7 +37,7 @@ if (isset($_POST['enewpw-submit'])) {
 					$hashedPwd = password_hash($haslo1, PASSWORD_DEFAULT);
 					mysqli_stmt_bind_param($stmt, "s", $hashedPwd ); 
 					mysqli_stmt_execute($stmt); 
-					header ("Location: ../employsession.php?success=success");
+					header ("Location: ../employsespwedit.php?success=success");
 					exit();
 				
 	

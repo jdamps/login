@@ -12,28 +12,28 @@
 		<?php
 		if (isset($_GET['error'])) {
 			if ($_GET['error'] == "emptyfields") {
-				echo '<p>Wypełnij wszystkie pola.</p>';
+				echo '<div class="alert alert-danger" role="alert">Wypełnij wszystkie pola.</div>';
 			}
 			else if ($_GET['error'] == "invalidemail") {
-				echo '<p>Wprowadzony adres e-mail wydaje się być nieprawidłowy.</p>';
+				echo '<div class="alert alert-danger" role="alert">Wprowadzony adres e-mail wydaje się być nieprawidłowy.</div>';
 			}
 			else if ($_GET['error'] == "passwordcheck") {
-				echo '<p>Hasła nie są identyczne.</p>';
+				echo '<div class="alert alert-danger" role="alert">Hasła nie są identyczne.</div>';
 			}
 			else if ($_GET['error'] == "usertaken") {
-				echo '<p>Podany login jest niedostępny.</p>';
+				echo '<div class="alert alert-danger" role="alert">Podany login jest niedostępny.</div>';
 			}
 			else if ($_GET['error'] == "sqlerrorr") {
-				echo '<p>Błąd łączenia z bazą.</p>';
+				echo '<div class="alert alert-danger" role="alert">Błąd łączenia z bazą.</div>';
 			}
 			else if ($_GET['error'] == "boxerrorr") {
-				echo '<p>Regulamin musi zostać zaakceptowany.</p>';
+				echo '<div class="alert alert-danger" role="alert">Regulamin musi zostać zaakceptowany.</div>';
 			}
 		
 		}
 		else if (isset($_GET['signup'])) {
 			if ($_GET['signup'] == "success") {
-			echo '<p>Konto zostało zarejestrowane.</p>';
+			echo '<div class="alert alert-info" role="alert">Konto zostało zarejestrowane.</div>';
 		}
 		}
 		?>

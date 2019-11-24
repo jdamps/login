@@ -25,19 +25,19 @@ $eid = $_SESSION['eid'];
 
 		if (isset($_GET['error'])) {
 			if ($_GET['error'] == "emptyfields") {
-				echo '<p>Wypełnij wszystkie pola.</p>';
+				echo '<div class="alert alert-danger" role="alert">Wypełnij wszystkie pola.</div>';
 			}
 			else if ($_GET['error'] == "passwordcheck") {
-				echo '<p>Hasła nie są identyczne.</p>';
+				echo '<div class="alert alert-danger" role="alert">Hasła nie są identyczne.</div>';
 			}
 			else if ($_GET['error'] == "sqlerror") {
-				echo '<p>Błąd łączenia z bazą.</p>';
+				echo '<div class="alert alert-danger" role="alert">Błąd łączenia z bazą.</div>';
 			}
 		
 		}
-		else if (isset($_GET['enewpw-submit'])) {
-			if ($_GET['enewpw-submit'] == "success") {
-			echo '<p>Hasło zostało poprawnie zmienione.</p>';
+		else if (isset($_GET['success'])) {
+			if ($_GET['success'] == "success") {
+			echo '<div class="alert alert-info" role="alert">Hasło zostało poprawnie zmienione.</div>';
 		}
 		}
 		
