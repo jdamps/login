@@ -42,6 +42,7 @@ mysqli_close($con);
 	<script src='fullcalendar/timegrid/main.js'></script>
 	<script src='fullcalendar/core/locales/pl.js'></script>
 
+
     <script>
 
       document.addEventListener('DOMContentLoaded', function() {
@@ -65,6 +66,87 @@ mysqli_close($con);
 				endTime: '15:00', // an end time (6pm in this example)
 				}],
 				
+	
+	
+		
+		events: 'load.php',
+		selectable:true,
+		selectHelper:true,
+		  select: function(start, end, allDay)
+			{
+			var title = prompt("Enter Event Title");
+			if(title)
+			{
+			var start = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+			var end = $.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
+			$.ajax({
+			url:"insert.php",
+			type:"POST",
+			data:{title:title, start:start, end:end},
+			success:function()
+			   {
+				calendar.fullCalendar('refetchEvents');
+				alert("Added Successfully");
+			   }
+			  })
+			 }
+			},
+			
+					editable:true,
+			eventResize:function(event)
+			{
+			 var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+			 var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+			 var title = event.title;
+			 var id = event.id;
+			 $.ajax({
+			  url:"update.php",
+			  type:"POST",
+			  data:{title:title, start:start, end:end, id:id},
+			  success:function(){
+			   calendar.fullCalendar('refetchEvents');
+			   alert('Event Update');
+			  }
+			 })
+			},
+			
+					eventDrop:function(event)
+			{
+			 var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+			 var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+			 var title = event.title;
+			 var id = event.id;
+			 $.ajax({
+			  url:"update.php",
+			  type:"POST",
+			  data:{title:title, start:start, end:end, id:id},
+			  success:function()
+			  {
+			   calendar.fullCalendar('refetchEvents');
+			   alert("Event Updated");
+			  }
+			 });
+			},
+			
+					eventClick:function(event)
+			{
+			 if(confirm("Are you sure you want to remove it?"))
+			 {
+			  var id = event.id;
+			  $.ajax({
+			   url:"delete.php",
+			   type:"POST",
+			   data:{id:id},
+			   success:function()
+			   {
+				calendar.fullCalendar('refetchEvents');
+				alert("Event Removed");
+			   }
+			  })
+			 }
+			},
+
+				
 				
 		header: {
 		left: 'prev,next',
@@ -80,26 +162,7 @@ mysqli_close($con);
 		}
 		},
 		
-		customButtons: {
-      addEventButton: {
-        text: 'add event...',
-        click: function() {
-          var dateStr = prompt('Enter a date in YYYY-MM-DD format');
-          var date = new Date(dateStr + 'T00:00:00'); // will be in local time
 
-          if (!isNaN(date.valueOf())) { // valid?
-            calendar.addEvent({
-              title: 'dynamic event',
-              start: date,
-              allDay: true
-            });
-            alert('Great. Now, update your database...');
-          } else {
-            alert('Invalid date.');
-          }
-        }
-      }
-    }
 		
         });
 
