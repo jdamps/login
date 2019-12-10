@@ -16,7 +16,10 @@
 		<nav class="nav nav-pills" style="background-color: #f2e9f5;">
   <a class="nav-item nav-link" href="adminsession.php">Pracownicy</a>
   <a class="nav-item nav-link" href="adminusersession.php">Klienci</a>
-  <a class="nav-item nav-link" href="kalendarz.php">Wizyty</a>
+  <a class="nav-item nav-link" href="kalendarz.php">Kalendarz</a>
+  <a class="nav-item nav-link" href="wizytyplan.php">Zaplanowane Wizyty</a>
+  <a class="nav-item nav-link" href="wizyty.php">Potwierdzone Wizyty</a>
+  <a class="nav-item nav-link" href="urlopy.php">Urlopy i Święta</a>
   <a class="nav-item nav-link" href="zabiegi.php">Zabiegi</a>
 </nav>
 
