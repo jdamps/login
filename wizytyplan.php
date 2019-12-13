@@ -45,9 +45,9 @@ require './includes/dbh.inc.php';
 
 
 
-if ($records=mysqli_query($con,"SELECT * FROM events WHERE status_event=0 AND title NOT LIKE 'urlop' ORDER BY start_event"))
+if ($records=mysqli_query($con,"SELECT * FROM events WHERE status_event=0 AND title NOT LIKE '%urlop%' AND title NOT LIKE '%wolne%' ORDER BY start_event"))
 	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
-	echo "<th>ID</th>";
+	echo "<th>ID event</th>";
 	echo "<th>Start</th>";
 	echo "<th>Koniec</th>";
 	echo "<th>Opis</th>";
@@ -64,7 +64,7 @@ if ($records=mysqli_query($con,"SELECT * FROM events WHERE status_event=0 AND ti
 	echo "<td>".$pk['end_event']."</td>";
 	echo "<td>".$pk['title']."</td>";
 	echo "<td><a href=wizytyconfirm.php?id=".$pk['id'].">OK</a></td>";
-	echo "<td><a href=includes/employdelete.inc.php?id=".$pk['id'].">Usuń</a></td>";
+	echo "<td><a href=includes/inc.php?id=".$pk['id'].">Usuń</a></td>";
 	echo "</form>";
 	echo "</tr>";
 	
