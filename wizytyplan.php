@@ -3,31 +3,17 @@ require "header.php";
 ?>
 
 <?php
-
 if (isset($_SESSION['aid'])) {
 	
 require 'includes/dbh.inc.php';
-
-
-
 $eid = $_SESSION['aid'];
-
-
 mysqli_close($con);
-
 require "header2.php";
-
-
-
 }
 else if (isset($_SESSION['eid'])) {
 	
 require 'includes/dbh.inc.php';
-
-
 $eid = $_SESSION['eid'];
-
-
 require "header4.php";
 }
 ?>
@@ -40,11 +26,7 @@ require "header4.php";
 </br>
 
 <?php
-
 require './includes/dbh.inc.php';
-
-
-
 if ($records=mysqli_query($con,"SELECT * FROM events WHERE status_event=0 AND title NOT LIKE '%urlop%' AND title NOT LIKE '%wolne%' ORDER BY start_event"))
 	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
 	echo "<th>ID event</th>";
@@ -53,7 +35,6 @@ if ($records=mysqli_query($con,"SELECT * FROM events WHERE status_event=0 AND ti
 	echo "<th>Opis</th>";
 	echo "<th>Potwierdź wizytę</th>";
 	echo "<th>Usuń</th>";
-
 	
 	while($pk=mysqli_fetch_assoc($records)){
 	
@@ -70,9 +51,6 @@ if ($records=mysqli_query($con,"SELECT * FROM events WHERE status_event=0 AND ti
 	
 	
 }
-
-
-
 ?>
 
 </div>

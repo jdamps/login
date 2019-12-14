@@ -13,7 +13,7 @@ $sql = "UPDATE pracownicy SET imie_pracownik='$_POST[imie_pracownik]', nazwisko_
 
 
 	if (mysqli_query($con, $sql)) 
-		header("refresh:1; url=../employsession.php");
+		header("refresh:1; url=../wizyty.php");
 		
 
 	else 
