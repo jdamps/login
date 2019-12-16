@@ -24,16 +24,14 @@ $sql = "INSERT INTO wizyty (id_events) VALUES ('$_GET[id]');";
 if(mysqli_query($con,$sql)){
 
 $wizyty_id = mysqli_insert_id($con);
-
-/*echo "la lal" .$wizyty_id;*/
 }
-
 ?>
+
 
 
 <?php
 require './includes/dbh.inc.php';
-$sql1 = "UPDATE events SET  status_event = '1' WHERE id='$_GET[id]';";
+$sql1 = "UPDATE events  SET id_wizyta='$wizyty_id', status_event = '1' WHERE id='$_GET[id]';";
 $records = mysqli_query($con,$sql1);
 ?>
 
