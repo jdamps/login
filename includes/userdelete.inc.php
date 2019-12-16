@@ -8,7 +8,7 @@ if (isset($_POST['udelete-submit'])) {
 	require './dbh.inc.php';
 	
 	$uid = $_POST['uid'];
-	$sql = "DELETE FROM klienci WHERE id_klient='$_POST[uid]'";
+	$sql = "UPDATE klienci  SET login_klient='anonim', imie_klient='anonim', nazwisko_klient='anonim', tel_klient='000000000', email_klient='anonim' WHERE id_klient='$_POST[uid]';";
 
 	if (mysqli_query($con, $sql)) {
     header("refresh:1; url=../index.php");

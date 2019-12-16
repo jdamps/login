@@ -44,6 +44,21 @@ szukajka!
 </br>
 </br>
 
+	<?php
+		if (isset($_GET['error'])) {
+			 if ($_GET['error'] == "sqlerrorr") {
+				echo '<p>Błąd łączenia z bazą.</p>';
+			}
+
+		
+		}
+		else if (isset($_GET['signup'])) {
+			if ($_GET['signup'] == "success") {
+			echo '<div class="alert alert-info" role="alert">Wizyta została potwierdzona.</div>';
+		}
+		}
+		?>
+
 <?php
 
 require './includes/dbh.inc.php';
