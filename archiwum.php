@@ -33,9 +33,9 @@ require "header4.php";
 ?>
 
 <main>
-<div class = "ml-2 mr-5 mt-5">
+<div class = "ml-2 mr-5 mt-2">
 
-<h3>Potwierdzone Wizyty</h3>
+<h3>ARCHIWUM</h3>
 
 
 szukajka! 
@@ -54,7 +54,7 @@ szukajka!
 		}
 		else if (isset($_GET['signup'])) {
 			if ($_GET['signup'] == "success") {
-			echo '<div class="alert alert-info" role="alert">Wizyta została potwierdzona.</div>';
+			echo '<div class="alert alert-danger" role="alert">Wizyta została anulowana.</div>';
 		}
 		}
 		?>
@@ -84,35 +84,30 @@ events.id=wizyty.id_events
 AND
 statusy_wizyt.id_status=wizyty.id_status
 AND
-statusy_wizyt.id_status=1
+statusy_wizyt.id_status!=1
 ORDER BY start_event
 "))
 	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
-
 	echo "<th>ID</th>";
 	echo "<th>Pracownik</th>";
 	echo "<th>Klient</th>";
 	echo "<th>Opis</th>";
-	echo "<th>Start</th>";
-	echo "<th>Koniec</th>";
+	echo "<th>Data</th>";
 	echo "<th>Status</th>";
-	echo "<th>Edytuj/Zrealizuj</th>";
-	echo "<th>Anuluj</th>";
+	echo "<th>Szczegóły</th>";
 
 	
 	while($pk=mysqli_fetch_assoc($records)){
 	
 	echo "<tr>";
-	echo "<tr><form method=POST action=includes/anuluj.inc.php>";
+	
 	echo "<td>".$pk['id_wizyta']."</td>";
 	echo "<td>".$pk['login_pracownik']."</td>";
 	echo "<td>".$pk['login_klient']."</td>";
 	echo "<td>".$pk['title']."</td>";
-	echo "<td>".$pk['start_event']."</td>";
 	echo "<td>".$pk['end_event']."</td>";
 	echo "<td>".$pk['nazwa_status']."</td>";
-	echo "<td><a href=wizytyedit.php?id=".$pk['id_wizyta'].">Edytuj/Zrealizuj</a></td>";
-	echo "<td><input type=hidden name=id_wizyta value='".$pk['id_wizyta']."'><input type=submit name=submit value=Anuluj></td>";
+	echo "<td><a href=#?id=".$pk['id_wizyta'].">Szczegóły</a></td>";
 	echo "</form>";
 	echo "</tr>";
 	

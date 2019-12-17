@@ -57,7 +57,7 @@ require "header4.php";
 require './includes/dbh.inc.php';
 
 
-if ($records=mysqli_query($con,"SELECT * FROM klienci"))
+if ($records=mysqli_query($con,"SELECT * FROM klienci WHERE login_klient!='anonim'"))
 	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
 	echo "<th>ID</th>";
 	echo "<th>Login</th>";
@@ -83,6 +83,32 @@ if ($records=mysqli_query($con,"SELECT * FROM klienci"))
 	echo "<td><a href=adminuserpwedit.php?id=".$pk['id_klient'].">Zmień</a></td>";
 	echo "<td><a href=includes/adminuserdelete.inc.php?id=".$pk['id_klient'].">Usuń</a></td>";
 	echo "</form>";
+	echo "</tr>";
+	
+	
+}
+
+
+
+?>
+
+<?php
+
+require './includes/dbh.inc.php';
+
+
+if ($records=mysqli_query($con,"SELECT * FROM klienci WHERE login_klient='anonim'"))
+	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
+	echo "<br />";
+	echo "<h3>ARCHIWUM</h3>";
+	
+	
+	while($pk=mysqli_fetch_assoc($records)){
+	
+	echo "<tr>";
+	
+	echo "<td>".$pk['id_klient']."</td>";
+	echo "<td>".$pk['login_klient']."</td>";
 	echo "</tr>";
 	
 	

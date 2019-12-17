@@ -93,7 +93,7 @@ if ($records=mysqli_query($con,"SELECT * FROM zabiegi"))
 	echo "<th>Minuty</th>";
 	echo "<th>Opis</th>";
 	echo "<th>Edytuj</th>";
-	echo "<th>Usuń</th>";
+	/*echo "<th>Usuń</th>";*/
 	
 	while($pk=mysqli_fetch_assoc($records)){
 	
@@ -105,7 +105,7 @@ if ($records=mysqli_query($con,"SELECT * FROM zabiegi"))
 	echo "<td>".$pk['czas_zabieg']."</td>";
 	echo "<td>".$pk['opis_zabieg']."</td>";
 	echo "<td><a href=zabiegedit.php?id=".$pk['id_zabieg'].">Edytuj</a></td>";
-	echo "<td><a href=includes/zabiegdelete.inc.php?id=".$pk['id_zabieg'].">Usuń</a></td>";
+	/*echo "<td><a href=includes/zabiegdelete.inc.php?id=".$pk['id_zabieg'].">Usuń</a></td>";*/
 	echo "</form>";
 	echo "</tr>";
 	

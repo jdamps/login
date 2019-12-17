@@ -19,8 +19,10 @@
   <a class="nav-item nav-link" href="kalendarz.php">Kalendarz</a>
   <a class="nav-item nav-link" href="wizytyplan.php">Zaplanowane Wizyty</a>
   <a class="nav-item nav-link" href="wizyty.php">Potwierdzone Wizyty</a>
-  <a class="nav-item nav-link" href="urlopy.php">Urlopy i Święta</a>
+  <a class="nav-item nav-link" href="archiwum.php">Archiwum Wizyt</a>
   <a class="nav-item nav-link" href="zabiegi.php">Zabiegi</a>
+  <a class="nav-item nav-link" href="urlopy.php">Urlopy i Święta</a>
+  
 </nav>
 
 		<!--JavaScript at end of body for optimized loading-->

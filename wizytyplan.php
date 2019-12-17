@@ -45,7 +45,7 @@ if ($records=mysqli_query($con,"SELECT * FROM events WHERE status_event=0 AND ti
 	echo "<td>".$pk['end_event']."</td>";
 	echo "<td>".$pk['title']."</td>";
 	echo "<td><a href=wizytyconfirm.php?id=".$pk['id'].">OK</a></td>";
-	echo "<td><a href=includes/inc.php?id=".$pk['id'].">Usuń</a></td>";
+	echo "<td><a href=includes/eventdelete.inc.php?id=".$pk['id'].">Usuń</a></td>";
 	echo "</form>";
 	echo "</tr>";
 	

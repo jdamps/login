@@ -99,7 +99,7 @@ $records = mysqli_query($con,$sql3);
 		
 		echo "</br >";
 		echo "Klient: ";
-		$resultSet = mysqli_query($con,"SELECT id_klient, login_klient FROM klienci WHERE login_klient !='anonim'");
+		$resultSet = mysqli_query($con,"SELECT id_klient, login_klient FROM klienci WHERE login_klient!='anonim'");
 		echo "<select name=klienci>";
 		while ($rows = $resultSet->fetch_assoc()){
 		$login_klient = $rows['login_klient'];

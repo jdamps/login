@@ -37,7 +37,7 @@ mysqli_close($con);
 require './includes/dbh.inc.php';
 
 
-if ($records=mysqli_query($con,"SELECT * FROM pracownicy"))
+if ($records=mysqli_query($con,"SELECT * FROM pracownicy WHERE login_pracownik!='pracownik'"))
 	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
 	echo "<th>ID</th>";
 	echo "<th>Login</th>";
@@ -63,6 +63,34 @@ if ($records=mysqli_query($con,"SELECT * FROM pracownicy"))
 	echo "<td><a href=employpwedit.php?id=".$pk['id_pracownik'].">Zmień</a></td>";
 	echo "<td><a href=includes/employdelete.inc.php?id=".$pk['id_pracownik'].">Usuń</a></td>";
 	echo "</form>";
+	echo "</tr>";
+	
+	
+}
+
+
+
+?>
+
+
+<?php
+
+require './includes/dbh.inc.php';
+
+
+if ($records=mysqli_query($con,"SELECT * FROM pracownicy WHERE login_pracownik='pracownik'"))
+	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
+	echo "<br />";
+	echo "<h3>ARCHIWUM</h3>";
+	
+	
+	while($pk=mysqli_fetch_assoc($records)){
+	
+	echo "<tr>";
+	
+	echo "<td>".$pk['id_pracownik']."</td>";
+	echo "<td>".$pk['login_pracownik']."</td>";
+	echo "<td>".$pk['opis_pracownik']."</td>";
 	echo "</tr>";
 	
 	
