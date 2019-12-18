@@ -55,7 +55,7 @@ require 'includes/dbh.inc.php';
 	echo "<tr><form method=POST action=includes/searchuserupdate.inc.php>";
 	echo "<tr>"; 
 	echo "<br />";
-	echo "<h4>Twoje Dane:</h4>";
+	echo "<h4>Dane:</h4>";
 	echo "<td><input type=text readonly=readonly size=5 name=login_klient value='".$row['login_klient']."'></td>";
 
 	echo "<br />";

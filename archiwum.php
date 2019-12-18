@@ -38,11 +38,13 @@ require "header4.php";
 <h3>ARCHIWUM</h3>
 
 
-szukajka! 
+<br />
+<form action="searchwizyty.php" method="POST">
+	<input type="text" name="search" placeholder="Klient/Pracownik/Data">
+	<button type="submit" name="submit-search">Szukaj</button>
+</form>
+<br />
 
-</br>
-</br>
-</br>
 
 	<?php
 		if (isset($_GET['error'])) {
@@ -93,7 +95,7 @@ ORDER BY start_event
 	echo "<th>Klient</th>";
 	echo "<th>Opis</th>";
 	echo "<th>Data</th>";
-	echo "<th>Status</th>";
+	echo "<th>Status Wizyty</th>";
 	echo "<th>Szczegóły</th>";
 
 	
