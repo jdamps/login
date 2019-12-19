@@ -80,7 +80,11 @@ klienci.nazwisko_klient LIKE '%$search%'
 OR
 klienci.imie_klient LIKE '%$search%'
 OR
-klienci.tel_klient LIKE '%$search%')
+klienci.tel_klient LIKE '%$search%'
+OR
+pracownicy.login_pracownik LIKE '%$search%'
+OR
+events.start_event LIKE '%$search%')
 ORDER BY start_event";
 		if ($records = mysqli_query($con, $sql5));
 		/*$queryResult = mysqli_num_rows($result);*/

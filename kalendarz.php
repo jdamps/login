@@ -129,23 +129,7 @@ mysqli_close($con);
      });
     },
 
-    eventClick:function(event)
-    {
-     if(confirm("Czy chcesz usunąć to wydarzenie?"))
-     {
-      var id = event.id;
-      $.ajax({
-       url:"kalendarzdelete.php",
-       type:"POST",
-       data:{id:id},
-       success:function()
-       {
-        calendar.fullCalendar('refetchEvents');
-        alert("Wydarzenie zostało usunięte");
-       }
-      })
-     }
-    },
+
 
    });
   });
