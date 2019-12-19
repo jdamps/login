@@ -51,7 +51,7 @@ require 'includes/dbh.inc.php';
 
 	if (isset($_POST['submit-search'])) {
 		$search = mysqli_real_escape_string($con, $_POST['search']);
-		$sql = "SELECT 
+		$sql5 = "SELECT 
 wizyty.id_wizyta,
 statusy_wizyt.nazwa_status,
 pracownicy.login_pracownik,
@@ -82,7 +82,7 @@ klienci.imie_klient LIKE '%$search%'
 OR
 klienci.tel_klient LIKE '%$search%')
 ORDER BY start_event";
-		if ($records = mysqli_query($con, $sql));
+		if ($records = mysqli_query($con, $sql5));
 		/*$queryResult = mysqli_num_rows($result);*/
 		
 		echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
@@ -112,8 +112,11 @@ ORDER BY start_event";
 			echo "<td>".$row['nazwa_status']."</td>";
 			echo "<td><a href=wizytyedit.php?id=".$row['id_wizyta'].">Edytuj/Zrealizuj</a></td>";
 			echo "<td><input type=hidden name=id_wizyta value='".$row['id_wizyta']."'><input type=submit name=submit value=Anuluj></td>";
-		
+			/*echo "<td><a href=includes/anuluj.inc.php?id=".$row['id_wizyta'].">Zmień</a></td>";*/
 			echo "</tr>";
+			echo "</form>";
+			
+			
 		
 
 	
@@ -197,7 +200,6 @@ ORDER BY start_event
 	echo "<td><input type=hidden name=id_wizyta value='".$pk['id_wizyta']."'><input type=submit name=submit value=Anuluj></td>";
 	echo "</form>";
 	echo "</tr>";
-	
 	
 }
 
