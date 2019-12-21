@@ -25,6 +25,8 @@ require "header4.php";
 
 </br>
 
+
+
 <?php
 require './includes/dbh.inc.php';
 if ($records=mysqli_query($con,"SELECT * FROM events WHERE status_event=0 AND title NOT LIKE '%urlop%' AND title NOT LIKE '%wolne%' ORDER BY start_event"))
@@ -52,6 +54,21 @@ if ($records=mysqli_query($con,"SELECT * FROM events WHERE status_event=0 AND ti
 	
 }
 ?>
+
+	<?php
+		if (isset($_GET['error'])) {
+			 if ($_GET['error'] == "sqlerrorr") {
+				echo '<p>Błąd łączenia z bazą.</p>';
+			}
+
+		
+		}
+		else if (isset($_GET['success'])) {
+			if ($_GET['success'] == "del") {
+			echo '<div class="alert alert-danger" role="alert">Wizyta została anulowana.</div>';
+		}
+		}
+		?>
 
 </div>
 </main>

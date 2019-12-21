@@ -35,7 +35,7 @@ require "header4.php";
 <main>
 <div class = "ml-2 mr-5 mt-5">
 
-<h3>Zaplanowane Wizyty</h3>
+<h3>Urlopy i Święta</h3>
 
 </br>
 
@@ -45,7 +45,19 @@ require './includes/dbh.inc.php';
 
 
 
-if ($records=mysqli_query($con,"SELECT * FROM events WHERE status_event=0 AND title LIKE '%urlop%' OR title like 'wolne' ORDER BY start_event"))
+if ($records=mysqli_query($con,"SELECT 
+pracownicy.login_pracownik,
+pracownicy.id_pracownik,
+events.title,
+events.id,
+events.start_event,
+events.end_event,
+events.id_pracownik
+FROM
+events
+LEFT JOIN pracownicy ON pracownicy.id_pracownik=events.id_pracownik
+WHERE title LIKE '%urlop%' OR title like 'wolne'
+ORDER BY start_event"))
 	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
 	echo "<th>ID</th>";
 	echo "<th>Start</th>";
@@ -53,6 +65,7 @@ if ($records=mysqli_query($con,"SELECT * FROM events WHERE status_event=0 AND ti
 	echo "<th>Opis</th>";
 	echo "<th>Pracownik</th>";
 	echo "<th>Edycja</th>";
+	echo "<th>Usuń</th>";
 
 	
 	while($pk=mysqli_fetch_assoc($records)){
@@ -63,8 +76,9 @@ if ($records=mysqli_query($con,"SELECT * FROM events WHERE status_event=0 AND ti
 	echo "<td>".$pk['start_event']."</td>";
 	echo "<td>".$pk['end_event']."</td>";
 	echo "<td>".$pk['title']."</td>";
-	echo "<td>".$pk['title']."</td>";
-	echo "<td><a href=employedit.php?id=".$pk['id'].">Edytuj</a></td>";
+	echo "<td>".$pk['login_pracownik']."</td>";
+	echo "<td><a href=urlopyedit.php?id=".$pk['id'].">OK</a></td>";
+	echo "<td><a href=includes/urlopydelete.inc.php?id=".$pk['id'].">Usuń</a></td>";
 	echo "</form>";
 	echo "</tr>";
 	
@@ -74,6 +88,21 @@ if ($records=mysqli_query($con,"SELECT * FROM events WHERE status_event=0 AND ti
 
 
 ?>
+
+	<?php
+		if (isset($_GET['success'])) {
+			 if ($_GET['success'] == "approved") {
+				echo '<div class="alert alert-info" role="alert">Urlop został potwierdzony.</div>';
+			}
+
+		
+		}
+		if (isset($_GET['success'])) {
+			if ($_GET['success'] == "del") {
+			echo '<div class="alert alert-danger" role="alert">Urlop został usunięty.</div>';
+		}
+		}
+		?>
 
 </div>
 </main>

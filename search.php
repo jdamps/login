@@ -88,7 +88,7 @@ require 'includes/dbh.inc.php';
 		
 		}
 		else {
-			echo "Nie ma takiego klienta";
+			header("refresh:0; url=adminusersession.php?success=none");
 
 	}
 	

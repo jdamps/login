@@ -51,6 +51,20 @@ require "header4.php";
 
 
 <h3>KLIENCI</h3>
+	<?php
+		if (isset($_GET['error'])) {
+			 if ($_GET['error'] == "sqlerrorr") {
+				echo '<p>Błąd łączenia z bazą.</p>';
+			}
+
+		
+		}
+		else if (isset($_GET['success'])) {
+			if ($_GET['success'] == "none") {
+			echo '<div class="alert alert-danger" role="alert">Nie ma takiego klienta.</div>';
+		}
+		}
+		?>
 
 <?php
 
@@ -117,6 +131,8 @@ if ($records=mysqli_query($con,"SELECT * FROM klienci WHERE login_klient='anonim
 
 
 ?>
+
+
 
 </div>
 </main>
