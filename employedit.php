@@ -6,12 +6,6 @@ require "header2.php";
 ?>
 
 
-
-
-
-
-
-
 <main>
 <div class = "mt-5">
 		<div class="container bg-light">
