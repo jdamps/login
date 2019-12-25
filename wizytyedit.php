@@ -107,29 +107,26 @@ ORDER BY start_event
 
 <?php
 
+$idwizyta = $_GET['id'];
+
+
 require './includes/dbh.inc.php';
 echo "<br />";
-	echo "<form method='POST' action='zabiegiadd.php'>";
-	echo "<select size=15 name=zabiegi multiple>";
+	echo "<form method='POST' action='./includes/zabiegiadd.inc.php'>";
 	
-if ($records=mysqli_query($con,"SELECT * FROM zabiegi"))
-	
+	echo "<select size=15 name=zabiegi>";
+	if ($records=mysqli_query($con,"SELECT * FROM zabiegi"))
 	while($pk=mysqli_fetch_assoc($records)){
-	
-	
-
-	echo '<option value="'.$pk['nazwa_zabieg'].'">'.$pk['nazwa_zabieg'].'</option>'; 
-
-
-
-	
-	
+	echo '<option value="'.$pk['id_zabieg'].'">'.$pk['nazwa_zabieg'].'</option>'; 
 }
 	echo "<br />";
 	echo "</select>";
 	echo "<br />";
-	echo "<input type='submit' value='Dodaj Zabieg'>";
+	echo "<input type=hidden name=idwizyta value='$idwizyta'>";
+	echo "<input type=submit name=submit value=Dodaj Zabieg>";
 	echo "</form>";
+	
+	
 	
 	
 
