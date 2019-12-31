@@ -9,7 +9,7 @@ $sql2 = "UPDATE events SET start_event='0000-00-00 00:00:00' WHERE id_wizyta='$_
 $records = mysqli_query($con,$sql2);
 mysqli_close($con);
 
- header("refresh:1; url=../archiwum.php?signup=success");
+ header("refresh:0; url=../archiwum.php?cancel=cancel");
 
 }
 				

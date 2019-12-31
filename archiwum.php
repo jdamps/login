@@ -139,9 +139,14 @@ ORDER BY start_event";
 
 		
 		}
-		else if (isset($_GET['signup'])) {
-			if ($_GET['signup'] == "success") {
+		else if (isset($_GET['cancel'])) {
+			if ($_GET['cancel'] == "cancel") {
 			echo '<div class="alert alert-danger" role="alert">Wizyta została anulowana.</div>';
+		}
+		}
+				else if (isset($_GET['success'])) {
+			if ($_GET['success'] == "done") {
+			echo '<div class="alert alert-info" role="alert">Wizyta została zrealizowana.</div>';
 		}
 		}
 		?>
