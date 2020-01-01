@@ -99,7 +99,7 @@ ORDER BY start_event";
 		echo "<th>Start</th>";
 		echo "<th>Koniec</th>";
 		echo "<th>Status Wizyty</th>";
-		echo "<th>Edytuj/Zrealizuj</th>";
+		echo "<th>Zrealizuj</th>";
 		echo "<th>Anuluj</th>";
 	
 			while ($row=mysqli_fetch_assoc($records)) {
@@ -114,7 +114,7 @@ ORDER BY start_event";
 			echo "<td>".$row['start_event']."</td>";
 			echo "<td>".$row['end_event']."</td>";
 			echo "<td>".$row['nazwa_status']."</td>";
-			echo "<td><a href=wizytyedit.php?id=".$row['id_wizyta'].">Edytuj/Zrealizuj</a></td>";
+			echo "<td><a href=wizytyedit.php?id=".$row['id_wizyta'].">OK</a></td>";
 			echo "<td><input type=hidden name=id_wizyta value='".$row['id_wizyta']."'><input type=submit name=submit value=Anuluj></td>";
 			/*echo "<td><a href=includes/anuluj.inc.php?id=".$row['id_wizyta'].">Zmień</a></td>";*/
 			echo "</tr>";
@@ -189,7 +189,7 @@ ORDER BY start_event
 	echo "<th>Start</th>";
 	echo "<th>Koniec</th>";
 	echo "<th>Status</th>";
-	echo "<th>Edytuj/Zrealizuj</th>";
+	echo "<th>Zrealizuj</th>";
 	echo "<th>Anuluj</th>";
 
 	
@@ -204,7 +204,7 @@ ORDER BY start_event
 	echo "<td>".$pk['start_event']."</td>";
 	echo "<td>".$pk['end_event']."</td>";
 	echo "<td>".$pk['nazwa_status']."</td>";
-	echo "<td><a href=wizytyedit.php?id=".$pk['id_wizyta'].">Edytuj/Zrealizuj</a></td>";
+	echo "<td><a href=wizytyedit.php?id=".$pk['id_wizyta'].">OK</a></td>";
 	echo "<td><input type=hidden name=id_wizyta value='".$pk['id_wizyta']."'><input type=submit name=submit value=Anuluj></td>";
 	echo "</form>";
 	echo "</tr>";
