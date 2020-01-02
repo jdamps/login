@@ -3,31 +3,17 @@ require "header.php";
 ?>
 
 <?php
-
 if (isset($_SESSION['aid'])) {
 	
 require 'includes/dbh.inc.php';
-
-
-
 $eid = $_SESSION['aid'];
-
-
 mysqli_close($con);
-
 require "header2.php";
-
-
-
 }
 else if (isset($_SESSION['eid'])) {
 	
 require 'includes/dbh.inc.php';
-
-
 $eid = $_SESSION['eid'];
-
-
 require "header4.php";
 }
 ?>
@@ -37,17 +23,20 @@ require "header4.php";
 
 <h3>ARCHIWUM</h3>
 
+
+
 <br />
 <form action="archiwum.php" method="POST">
-	<input type="text" name="search" placeholder="Klient/Pracownik/Data">
+	<input type="text" name="search" placeholder="Osoba/Data/Status">
 	<button type="submit" name="submit-search">Szukaj</button>
 </form>
 <br />
 
-
 <?php
-
 require 'includes/dbh.inc.php';
+
+
+
 
 	if (isset($_POST['submit-search'])) {
 		$search = mysqli_real_escape_string($con, $_POST['search']);
@@ -84,7 +73,9 @@ klienci.tel_klient LIKE '%$search%'
 OR
 pracownicy.login_pracownik LIKE '%$search%'
 OR
-events.start_event LIKE '%$search%')
+events.end_event LIKE '%$search%'
+OR
+statusy_wizyt.nazwa_status LIKE '%$search%')
 ORDER BY start_event";
 		if ($records = mysqli_query($con, $sql5));
 		/*$queryResult = mysqli_num_rows($result);*/
@@ -93,14 +84,12 @@ ORDER BY start_event";
 		echo "<th>ID</th> "; 
 		echo "<th>Pracownik</th>";
 		echo "<th>Klient</th>";
-		
 		/*echo "<th>Nazwisko</th>";*/
 		/*echo "<th>Telefon</th>";*/
-		echo "<th>Start</th>";
+		/*echo "<th>Data</th>";*/
 		echo "<th>Koniec</th>";
 		echo "<th>Status Wizyty</th>";
-		echo "<th>Zrealizuj</th>";
-		/*echo "<th>Anuluj</th>";*/
+		echo "<th>Szczegóły</th>";
 	
 			while ($row=mysqli_fetch_assoc($records)) {
 			echo "<tr>";
@@ -111,29 +100,23 @@ ORDER BY start_event";
 			/*echo "<td>".$row['imie_klient']."</td>";*/
 			/*echo "<td>".$row['nazwisko_klient']."</td>";*/
 			/*echo "<td>".$row['tel_klient']."</td>";*/
-			echo "<td>".$row['start_event']."</td>";
+			/*echo "<td>".$row['start_event']."</td>";*/
 			echo "<td>".$row['end_event']."</td>";
 			echo "<td>".$row['nazwa_status']."</td>";
-			echo "<td><a href=summary.php?id=".$row['id_wizyta'].">OK</a></td>";
-			/*echo "<td><input type=hidden name=id_wizyta value='".$row['id_wizyta']."'><input type=submit name=submit value=Anuluj></td>";*/
-			/*echo "<td><a href=includes/anuluj.inc.php?id=".$row['id_wizyta'].">Zmień</a></td>";*/
+			$idwizyta = $row['id_wizyta'];
+			echo "<input type=hidden name=idwizyta value='$idwizyta'>";
+			echo "<td><a href=summary.php?id=".$row['id_wizyta'].">Szczegóły</a></td>";
 			echo "</tr>";
 			echo "</form>";
 			
 			
 		
-
 	
 		
 		}
 		echo "</table>";
 		echo "<br />";
-		
-
 }
-
-
-
 ?>
 
 
@@ -142,22 +125,22 @@ ORDER BY start_event";
 			 if ($_GET['error'] == "sqlerrorr") {
 				echo '<p>Błąd łączenia z bazą.</p>';
 			}
-
 		
 		}
-		else if (isset($_GET['signup'])) {
-			if ($_GET['signup'] == "success") {
-			echo '<div class="alert alert-info" role="alert">Wizyta została potwierdzona.</div>';
+		else if (isset($_GET['cancel'])) {
+			if ($_GET['cancel'] == "cancel") {
+			echo '<div class="alert alert-danger" role="alert">Wizyta została anulowana.</div>';
+		}
+		}
+				else if (isset($_GET['success'])) {
+			if ($_GET['success'] == "done") {
+			echo '<div class="alert alert-info" role="alert">Wizyta została zrealizowana.</div>';
 		}
 		}
 		?>
 
 <?php
-
 require './includes/dbh.inc.php';
-
-
-
 if ($records=mysqli_query($con,"SELECT 
 wizyty.id_wizyta,
 statusy_wizyt.nazwa_status,
@@ -179,40 +162,34 @@ statusy_wizyt.id_status=wizyty.id_status
 AND
 statusy_wizyt.id_status!=1
 ORDER BY start_event
-")) 
+"))
 	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
-
 	echo "<th>ID</th>";
 	echo "<th>Pracownik</th>";
 	echo "<th>Klient</th>";
 	echo "<th>Opis</th>";
-	echo "<th>Start</th>";
-	echo "<th>Koniec</th>";
-	echo "<th>Status</th>";
+	echo "<th>Data</th>";
+	echo "<th>Status Wizyty</th>";
 	echo "<th>Szczegóły</th>";
-
-
 	
 	while($pk=mysqli_fetch_assoc($records)){
 	
 	echo "<tr>";
-	echo "<tr><form method=POST action=includes/anuluj.inc.php>";
+	
 	echo "<td>".$pk['id_wizyta']."</td>";
 	echo "<td>".$pk['login_pracownik']."</td>";
 	echo "<td>".$pk['login_klient']."</td>";
 	echo "<td>".$pk['title']."</td>";
-	echo "<td>".$pk['start_event']."</td>";
 	echo "<td>".$pk['end_event']."</td>";
 	echo "<td>".$pk['nazwa_status']."</td>";
-	echo "<td><a href=summary.php?id=".$pk['id_wizyta'].">OK</a></td>";
-	/*echo "<td><input type=hidden name=id_wizyta value='".$pk['id_wizyta']."'><input type=submit name=submit value=Anuluj></td>";*/
+	$idwizyta = $pk['id_wizyta'];
+	echo "<input type=hidden name=idwizyta value='$idwizyta'>";
+	echo "<td><a href=summary.php?id=".$pk['id_wizyta'].">Szczegóły</a></td>";
 	echo "</form>";
 	echo "</tr>";
 	
+	
 }
-
-
-
 ?>
 
 </div>
