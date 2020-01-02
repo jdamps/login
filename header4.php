@@ -18,8 +18,10 @@
   <a class="nav-item nav-link" href="employsespwedit.php">Zmiana Hasła</a>
   <a class="nav-item nav-link" href="adminusersession.php">Klienci</a>
   <a class="nav-item nav-link" href="kalendarz.php">Kalendarz</a>
-  <a class="nav-item nav-link" href="wizyty.php">Wizyty</a>
-  <a class="nav-item nav-link" href="zabiegi.php">Zabiegi</a>
+  <a class="nav-item nav-link" href="wizytyplan.php"> Zaplanowane Wizyty</a>
+  <a class="nav-item nav-link" href="wizyty.php"> Potwierdzone Wizyty</a>
+  <a class="nav-item nav-link" href="archiwum.php">Archiwum</a>
+  <a class="nav-item nav-link" href="urlopy.php">Urlopy i Święta</a>
 
 </nav>
 

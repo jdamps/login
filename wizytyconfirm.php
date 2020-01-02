@@ -85,7 +85,7 @@ $records = mysqli_query($con,$sql3);
 		
 		
 		echo "Pracownik: ";
-		$resultSet = mysqli_query($con,"SELECT id_pracownik, login_pracownik FROM pracownicy");
+		$resultSet = mysqli_query($con,"SELECT id_pracownik, login_pracownik FROM pracownicy WHERE login_pracownik!='pracownik'");
 		echo "<select name=pracownicy>";
 		while ($rows = $resultSet->fetch_assoc()){
 		$login_pracownik = $rows['login_pracownik'];
