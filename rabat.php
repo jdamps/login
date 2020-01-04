@@ -108,7 +108,8 @@ AND
 wizyty.id_wizyta=$wizyty
 ORDER BY start_event
 ")) 
-	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
+	echo "<table class=table>";
+	echo "<tr class=table-secondary>";
 
 	echo "<th>ID</th>";
 	echo "<th>Pracownik</th>";

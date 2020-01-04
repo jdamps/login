@@ -89,7 +89,8 @@ ORDER BY start_event";
 		if ($records = mysqli_query($con, $sql5));
 		/*$queryResult = mysqli_num_rows($result);*/
 		
-		echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
+		echo "<table class=table>";
+		echo "<tr class=table-secondary>";
 		echo "<th>ID</th> "; 
 		echo "<th>Pracownik</th>";
 		echo "<th>Klient</th>";
@@ -99,7 +100,7 @@ ORDER BY start_event";
 		echo "<th>Start</th>";
 		echo "<th>Koniec</th>";
 		echo "<th>Status Wizyty</th>";
-		echo "<th>Zrealizuj</th>";
+		echo "<th>Szczegóły</th>";
 		/*echo "<th>Anuluj</th>";*/
 	
 			while ($row=mysqli_fetch_assoc($records)) {
@@ -180,7 +181,8 @@ AND
 statusy_wizyt.id_status!=1
 ORDER BY start_event
 ")) 
-	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
+	echo "<table class=table>";
+	echo "<tr class=table-secondary>";
 
 	echo "<th>ID</th>";
 	echo "<th>Pracownik</th>";

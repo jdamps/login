@@ -5,7 +5,6 @@
 
 
 if (isset($_POST['submit'])){
-
 require './dbh.inc.php';
 
 $pracownicy=$_POST["pracownicy"];
@@ -19,13 +18,9 @@ $klienci=$_POST["klienci"];
 $sql = "UPDATE wizyty SET id_klient='$_POST[klienci]', id_pracownik='$_POST[pracownicy]', id_status=1 WHERE id_wizyta='$_POST[id_wizyta]'";
 $records = mysqli_query($con,$sql);
 mysqli_close($con);
- header("refresh:1; url=../wizyty.php?signup=success");
- 
+
+ header("refresh:1; url=../ewizyty.php?signup=success");
 
 }
- 
-
-
-
 
 ?>

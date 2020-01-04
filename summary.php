@@ -71,7 +71,8 @@ AND
 wizyty.id_wizyta='$_GET[id]'
 ORDER BY start_event
 ")) 
-	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
+	echo "<table class=table>";
+	echo "<tr class=table-secondary>";
 
 	echo "<th>ID</th>";
 	echo "<th>Pracownik</th>";
@@ -125,7 +126,7 @@ klienci.id_klient=wizyty.id_klient
 AND
 wizyty.id_wizyta='$_GET[id]'
 ")) 
-	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
+echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
 
 	echo "<th>ID</th>";
 	echo "<th>Imię</th>";
@@ -174,7 +175,7 @@ pracownicy.id_pracownik=wizyty.id_pracownik
 AND
 wizyty.id_wizyta='$_GET[id]'
 ")) 
-	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
+echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
 
 	echo "<th>ID</th>";
 	echo "<th>Imię</th>";
@@ -223,7 +224,7 @@ r6.id_zabieg=zabiegi.id_zabieg
 AND
 r6.id_wizyta='$_GET[id]'
 ")) 
-	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
+echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
 
 	echo "<th>ID</th>";
 	echo "<th>Zabieg</th>";

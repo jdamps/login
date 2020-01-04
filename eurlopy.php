@@ -37,8 +37,6 @@ require "header4.php";
 
 <h3>Urlopy</h3>
 
-
-
 <?php
 
 require './includes/dbh.inc.php';
@@ -53,10 +51,11 @@ events.id,
 events.start_event,
 events.end_event,
 events.id_pracownik
-FROM
-events
-LEFT JOIN pracownicy ON pracownicy.id_pracownik=events.id_pracownik
-WHERE title LIKE '%urlop%'
+FROM pracownicy, events
+WHERE 
+pracownicy.id_pracownik=events.id_pracownik
+AND
+pracownicy.id_pracownik=$eid
 ORDER BY start_event"))
 	echo "<table class=table>";
 	echo "<tr class=table-secondary>";
@@ -65,7 +64,6 @@ ORDER BY start_event"))
 	echo "<th>Koniec</th>";
 	echo "<th>Opis</th>";
 	echo "<th>Pracownik</th>";
-	echo "<th>Edycja</th>";
 	echo "<th>Usuń</th>";
 
 	
@@ -78,7 +76,6 @@ ORDER BY start_event"))
 	echo "<td>".$pk['end_event']."</td>";
 	echo "<td>".$pk['title']."</td>";
 	echo "<td>".$pk['login_pracownik']."</td>";
-	echo "<td><a href=urlopyedit.php?id=".$pk['id'].">OK</a></td>";
 	echo "<td><a href=includes/urlopydelete.inc.php?id=".$pk['id'].">Usuń</a></td>";
 	echo "</form>";
 	echo "</tr>";
@@ -87,6 +84,7 @@ ORDER BY start_event"))
 }
 
 echo "</table>";
+
 
 ?>
 
@@ -118,9 +116,7 @@ ORDER BY start_event"))
 	echo "<th>Start</th>";
 	echo "<th>Koniec</th>";
 	echo "<th>Opis</th>";
-	echo "<th>Pracownik</th>";
-	echo "<th>Edycja</th>";
-	echo "<th>Usuń</th>";
+
 
 	
 	while($pk=mysqli_fetch_assoc($records)){
@@ -131,9 +127,6 @@ ORDER BY start_event"))
 	echo "<td>".$pk['start_event']."</td>";
 	echo "<td>".$pk['end_event']."</td>";
 	echo "<td>".$pk['title']."</td>";
-	echo "<td>".$pk['login_pracownik']."</td>";
-	echo "<td><a href=urlopyedit.php?id=".$pk['id'].">OK</a></td>";
-	echo "<td><a href=includes/urlopydelete.inc.php?id=".$pk['id'].">Usuń</a></td>";
 	echo "</form>";
 	echo "</tr>";
 	

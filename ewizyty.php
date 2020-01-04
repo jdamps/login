@@ -2,43 +2,35 @@
 require "header.php";
 ?>
 
+
 <?php
 
-if (isset($_SESSION['aid'])) {
+if (isset($_SESSION['eid'])) {
 	
 require 'includes/dbh.inc.php';
 
-
-
-$eid = $_SESSION['aid'];
-
-
-mysqli_close($con);
-
-require "header2.php";
-
-
-
-}
-else if (isset($_SESSION['eid'])) {
-	
-require 'includes/dbh.inc.php';
 
 
 $eid = $_SESSION['eid'];
 
 
+mysqli_close($con);
+
 require "header4.php";
+
+
+
 }
+
 ?>
 
 <main>
-<div class = "ml-2 mr-5 mt-2">
+<div class = "ml-2 mr-5 mt-5">
 
 <h3>Potwierdzone Wizyty</h3>
 
 <br />
-<form action="wizyty.php" method="POST">
+<form action="ewizyty.php" method="POST">
 	<input type="text" name="search" placeholder="Klient/Pracownik/Data">
 	<button type="submit" name="submit-search">Szukaj</button>
 </form>
@@ -100,7 +92,6 @@ ORDER BY start_event";
 		echo "<th>Start</th>";
 		echo "<th>Koniec</th>";
 		echo "<th>Status Wizyty</th>";
-		echo "<th>Zrealizuj</th>";
 		echo "<th>Anuluj</th>";
 	
 			while ($row=mysqli_fetch_assoc($records)) {
@@ -115,7 +106,6 @@ ORDER BY start_event";
 			echo "<td>".$row['start_event']."</td>";
 			echo "<td>".$row['end_event']."</td>";
 			echo "<td>".$row['nazwa_status']."</td>";
-			echo "<td><a href=wizytyedit.php?id=".$row['id_wizyta'].">OK</a></td>";
 			echo "<td><input type=hidden name=id_wizyta value='".$row['id_wizyta']."'><input type=submit name=submit value=Anuluj></td>";
 			/*echo "<td><a href=includes/anuluj.inc.php?id=".$row['id_wizyta'].">Zmień</a></td>";*/
 			echo "</tr>";
@@ -136,22 +126,6 @@ ORDER BY start_event";
 
 
 ?>
-
-
-	<?php
-		if (isset($_GET['error'])) {
-			 if ($_GET['error'] == "sqlerrorr") {
-				echo '<p>Błąd łączenia z bazą.</p>';
-			}
-
-		
-		}
-		else if (isset($_GET['signup'])) {
-			if ($_GET['signup'] == "success") {
-			echo '<div class="alert alert-info" role="alert">Wizyta została potwierdzona.</div>';
-		}
-		}
-		?>
 
 <?php
 
@@ -174,6 +148,8 @@ pracownicy.id_pracownik=wizyty.id_pracownik
 AND
 klienci.id_klient=wizyty.id_klient
 AND
+pracownicy.id_pracownik=$eid
+AND
 events.id=wizyty.id_events
 AND
 statusy_wizyt.id_status=wizyty.id_status
@@ -181,9 +157,9 @@ AND
 statusy_wizyt.id_status=1
 ORDER BY start_event
 ")) 
+	/*echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";*/
 	echo "<table class=table>";
 	echo "<tr class=table-secondary>";
-
 	echo "<th>ID</th>";
 	echo "<th>Pracownik</th>";
 	echo "<th>Klient</th>";
@@ -191,14 +167,14 @@ ORDER BY start_event
 	echo "<th>Start</th>";
 	echo "<th>Koniec</th>";
 	echo "<th>Status</th>";
-	echo "<th>Zrealizuj</th>";
+	echo "<th>Szczególy</th>";
 	echo "<th>Anuluj</th>";
 
 	
 	while($pk=mysqli_fetch_assoc($records)){
 	
 	echo "<tr>";
-	echo "<tr><form method=POST action=includes/anuluj.inc.php>";
+	echo "<tr><form method=POST action=includes/uanuluj.inc.php>";
 	echo "<td>".$pk['id_wizyta']."</td>";
 	echo "<td>".$pk['login_pracownik']."</td>";
 	echo "<td>".$pk['login_klient']."</td>";
@@ -206,7 +182,7 @@ ORDER BY start_event
 	echo "<td>".$pk['start_event']."</td>";
 	echo "<td>".$pk['end_event']."</td>";
 	echo "<td>".$pk['nazwa_status']."</td>";
-	echo "<td><a href=wizytyedit.php?id=".$pk['id_wizyta'].">OK</a></td>";
+	echo "<td><a href=uwizytyedit.php?id=".$pk['id_wizyta'].">OK</a></td>";
 	echo "<td><input type=hidden name=id_wizyta value='".$pk['id_wizyta']."'><input type=submit name=submit value=Anuluj></td>";
 	echo "</form>";
 	echo "</tr>";

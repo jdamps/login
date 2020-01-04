@@ -9,8 +9,15 @@ require './dbh.inc.php';
 
 	}
 
-else { 
+else if (isset($_SESSION['aid']))  { 
 		header ("Location: ../wizyty.php");
 		exit();
 
 }
+
+else if (isset($_SESSION['eid']))  { 
+		header ("Location: ../ewizyty.php");
+		exit();
+
+}
+

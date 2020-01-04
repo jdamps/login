@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	session_start();
 ?>
 
@@ -28,10 +28,7 @@
 		<a class="nav-link" href="index.php">Start</a>
 		</li>
 		<li class="nav-item">
-		<a class="nav-link" href="#">Usługi</a>
-		</li>
-		<li class="nav-item">
-		<a class="nav-link" href="#">O nas</a>
+		<a class="nav-link" href="uslugi.php">Usługi</a>
 		</li>
 		<li class="nav-item">
 		<a class="nav-link" href="#">Kontakt</a>

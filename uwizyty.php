@@ -59,8 +59,9 @@ AND
 statusy_wizyt.id_status=1
 ORDER BY start_event
 ")) 
-	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
-
+	/*echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";*/
+	echo "<table class=table>";
+	echo "<tr class=table-secondary>";
 	echo "<th>ID</th>";
 	echo "<th>Pracownik</th>";
 	echo "<th>Klient</th>";
@@ -68,14 +69,14 @@ ORDER BY start_event
 	echo "<th>Start</th>";
 	echo "<th>Koniec</th>";
 	echo "<th>Status</th>";
-	echo "<th>Zrealizuj</th>";
+	echo "<th>Szczególy</th>";
 	echo "<th>Anuluj</th>";
 
 	
 	while($pk=mysqli_fetch_assoc($records)){
 	
 	echo "<tr>";
-	echo "<tr><form method=POST action=includes/anuluj.inc.php>";
+	echo "<tr><form method=POST action=includes/uanuluj.inc.php>";
 	echo "<td>".$pk['id_wizyta']."</td>";
 	echo "<td>".$pk['login_pracownik']."</td>";
 	echo "<td>".$pk['login_klient']."</td>";
@@ -83,7 +84,7 @@ ORDER BY start_event
 	echo "<td>".$pk['start_event']."</td>";
 	echo "<td>".$pk['end_event']."</td>";
 	echo "<td>".$pk['nazwa_status']."</td>";
-	echo "<td><a href=wizytyedit.php?id=".$pk['id_wizyta'].">OK</a></td>";
+	echo "<td><a href=uwizytyedit.php?id=".$pk['id_wizyta'].">OK</a></td>";
 	echo "<td><input type=hidden name=id_wizyta value='".$pk['id_wizyta']."'><input type=submit name=submit value=Anuluj></td>";
 	echo "</form>";
 	echo "</tr>";

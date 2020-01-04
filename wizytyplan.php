@@ -19,7 +19,7 @@ require "header4.php";
 ?>
 
 <main>
-<div class = "ml-2 mr-5 mt-5">
+<div class = "ml-2 mr-5 mt-2">
 
 <h3>Zaplanowane Wizyty</h3>
 
@@ -30,7 +30,8 @@ require "header4.php";
 <?php
 require './includes/dbh.inc.php';
 if ($records=mysqli_query($con,"SELECT * FROM events WHERE status_event=0 AND title NOT LIKE '%urlop%' AND title NOT LIKE '%wolne%' ORDER BY start_event"))
-	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
+	echo "<table class=table>";
+	echo "<tr class=table-secondary>";
 	echo "<th>ID event</th>";
 	echo "<th>Start</th>";
 	echo "<th>Koniec</th>";

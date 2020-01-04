@@ -4,32 +4,23 @@ require "header.php";
 
 <?php
 
-if (isset($_SESSION['aid'])) {
+if (isset($_SESSION['uid'])) {
 	
 require 'includes/dbh.inc.php';
 
 
 
-$eid = $_SESSION['aid'];
+$eid = $_SESSION['uid'];
 
 
 mysqli_close($con);
 
-require "header2.php";
+require "header3.php";
 
 
 
 }
-else if (isset($_SESSION['eid'])) {
-	
-require 'includes/dbh.inc.php';
 
-
-$eid = $_SESSION['eid'];
-
-
-require "header4.php";
-}
 ?>
 
 
@@ -103,32 +94,6 @@ ORDER BY start_event
 
 ?>
 
-
-<?php
-
-$idwizyta = $_GET['id'];
-
-
-require './includes/dbh.inc.php';
-echo "<br />";
-	echo "<form method='POST' action='./includes/zabiegiadd.inc.php'>";
-	
-	echo "<select size=15 name=zabiegi>";
-	if ($records=mysqli_query($con,"SELECT * FROM zabiegi"))
-	while($pk=mysqli_fetch_assoc($records)){
-	echo '<option value="'.$pk['id_zabieg'].'">'.$pk['nazwa_zabieg'].'</option>'; 
-}
-	echo "<br />";
-	echo "</select>";
-	echo "<br />";
-	echo "<input type=hidden name=idwizyta value='$idwizyta'>";
-	echo "<input type=submit name=submit value='Dodaj Zabieg'>";
-	echo "</form>";
-	echo "<br />";
-	
-
-?>
-
 <?php
 
 require './includes/dbh.inc.php';
@@ -154,7 +119,6 @@ r6.id_wizyta='$_GET[id]'
 	echo "<th>Zabieg</th>";
 	echo "<th>Cena</th>";
 	echo "<th>Czas</th>";
-	echo "<th>Usuń</th>";
 
 	echo "<tr><form method=POST action=includes/usunzabieg.inc.php>";
 	while($pk=mysqli_fetch_assoc($records)){	
@@ -165,9 +129,7 @@ r6.id_wizyta='$_GET[id]'
 	echo "<td>".$pk['nazwa_zabieg']."</td>";
 	echo "<td>".$pk['cena_zabieg']."</td>";
 	echo "<td>".$pk['czas_zabieg']."</td>";
-	echo "<input type=hidden name=idwizyta value='$idwizyta'>";
-	echo "<input type=hidden name=idzabieg value='$idzabieg'>";
-	echo "<td><input type=submit name=submit value=Usuń></td>";
+
 	echo "</tr></form>";
 	
 	
@@ -206,60 +168,6 @@ else
 echo "Czas trwania:"; echo hour_min($time);
 ?>
 
-
-
-<?php
-require './includes/dbh.inc.php';
-
-
-
-$result = mysqli_query($con,"SELECT SUM(zabiegi.cena_zabieg) AS 'cena'
-FROM
-r6, zabiegi
-WHERE
-r6.id_zabieg=zabiegi.id_zabieg
-AND
-r6.id_wizyta='$_GET[id]'
-");
-
-$row = mysqli_fetch_assoc($result);
-$sum = $row['cena'];
-echo "<br />";
-echo "<br />";
-echo "<h3>Suma: $sum </h3>"; 	
-
-
-
-?>
-
-
-<?php
-
-
-
-$idwizyta = $_GET['id'];
-$sum = $row['cena'];
-
-	
-		echo "<tr><form method=POST action=rabat.php>";
-		echo "Rabat: ";
-		$resultSet = mysqli_query($con,"SELECT id_rabat, procent_rabat, wartosc_rabat FROM rabaty");
-		echo "<select name=rabaty>";
-		while ($rows = $resultSet->fetch_assoc()){
-		$id_rabat= $rows['id_rabat'];
-		$procent_rabat = $rows['procent_rabat'];
-		$wartosc_rabat = $rows['wartosc_rabat'];
-		echo "<option value='".$rows['wartosc_rabat']."'>$procent_rabat</option>";
-		}
-		echo "</select>";
-		echo "<input type=hidden name=idwizyta value='$idwizyta'>";
-		echo "<input type=hidden name=sum value='$sum'>";
-		echo "<input type=submit name=submit value=Przelicz>";
-		echo "</form></tr>";
-		
-	
-	
-	?>
 
 	
 <?php

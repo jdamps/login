@@ -86,7 +86,8 @@ require './includes/dbh.inc.php';
 
 
 if ($records=mysqli_query($con,"SELECT * FROM zabiegi"))
-	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
+	echo "<table class=table>";
+	echo "<tr class=table-secondary>";
 	echo "<th>ID</th>";
 	echo "<th>Nazwa</th>";
 	echo "<th>Cena</th>";

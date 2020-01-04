@@ -38,7 +38,8 @@ require './includes/dbh.inc.php';
 
 
 if ($records=mysqli_query($con,"SELECT * FROM pracownicy WHERE login_pracownik!='pracownik'"))
-	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
+	echo "<table class=table>";
+	echo "<tr class=table-secondary>";
 	echo "<th>ID</th>";
 	echo "<th>Login</th>";
 	echo "<th>Imię</th>";
@@ -82,6 +83,13 @@ if ($records=mysqli_query($con,"SELECT * FROM pracownicy WHERE login_pracownik='
 	echo "<table width='900' border='1' cellpadding='1' cellspacing='1'>";
 	echo "<br />";
 	echo "<h3>ARCHIWUM</h3>";
+	
+	echo "<table class=table>";
+	echo "<tr class=table-secondary>";
+	echo "<th>ID</th>";
+	echo "<th>Login</th>";
+	echo "<th>Opis</th>";
+	echo "</tr>";
 	
 	
 	while($pk=mysqli_fetch_assoc($records)){
