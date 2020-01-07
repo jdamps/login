@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require "header.php";
 ?>
 <?php
@@ -81,7 +81,7 @@ $records = mysqli_query($con,$sql3);
 		
 		
 	{
-		echo "<tr><form method=POST action=includes/wizytyconfirm.inc.php>";
+		echo "<tr><form method=POST action=includes/ewizytyconfirm.inc.php>";
 		echo "<br />";
 		echo "ID wizyta: ";
 		echo "<td><input type=text readonly=readonly name=id_wizyta value='".$row['id_wizyta']."'></td>";

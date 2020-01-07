@@ -14,14 +14,14 @@
 		<header>
 		
 		<nav class="nav nav-pills" style="background-color: #f2e9f5;">
-  <a class="nav-item nav-link" href="adminsession.php">Pracownicy</a>
-  <a class="nav-item nav-link" href="adminusersession.php">Klienci</a>
-  <a class="nav-item nav-link" href="kalendarz.php">Kalendarz</a>
-  <a class="nav-item nav-link" href="wizytyplan.php">Zaplanowane Wizyty</a>
-  <a class="nav-item nav-link" href="wizyty.php">Potwierdzone Wizyty</a>
-  <a class="nav-item nav-link" href="archiwum.php">Archiwum Wizyt</a>
-  <a class="nav-item nav-link" href="zabiegi.php">Zabiegi</a>
-  <a class="nav-item nav-link" href="urlopy.php">Urlopy i Święta</a>
+  <a class="nav-item nav-link" style="color: black;" href="adminsession.php">Pracownicy</a>
+  <a class="nav-item nav-link" style="color: black;" href="adminusersession.php">Klienci</a>
+  <a class="nav-item nav-link" style="color: black;" href="kalendarz.php">Kalendarz</a>
+  <a class="nav-item nav-link" style="color: black;" href="wizytyplan.php">Zaplanowane Wizyty</a>
+  <a class="nav-item nav-link" style="color: black;" href="wizyty.php">Potwierdzone Wizyty</a>
+  <a class="nav-item nav-link" style="color: black;" href="archiwum.php">Archiwum Wizyt</a>
+  <a class="nav-item nav-link" style="color: black;" href="zabiegi.php">Zabiegi</a>
+  <a class="nav-item nav-link" style="color: black;" href="urlopy.php">Urlopy i Święta</a>
   
 </nav>
 

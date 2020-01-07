@@ -29,7 +29,6 @@ $eid = $_SESSION['eid'];
 
 
 require "header4.php";
-header ("Location: ./employsession.php?error=permissiondeny");
 }
 
 else if (isset($_SESSION['uid'])) {

@@ -1,6 +1,7 @@
-<?php
+﻿<?php
 require "header.php";
 ?>
+
 
 
 <?php
@@ -22,9 +23,39 @@ require "header4.php";
 
 }
 
+else if (isset($_SESSION['uid'])) {
+	
+require 'includes/dbh.inc.php';
+
+
+$uid = $_SESSION['uid'];
+
+
+require "header3.php";
+
+header ("Location: ./usersession.php?error=permissiondeny");
+		exit();
+}
+
+
 ?>
 
 <main>
+
+	<?php
+		if (isset($_GET['success'])) {
+			 if ($_GET['success'] == "del") {
+				echo '<div class="alert alert-info" role="alert">Urlop został usunięty.</div>';
+			}
+
+		
+		}
+		else if (isset($_GET['signup'])) {
+			if ($_GET['signup'] == "success") {
+			echo '<div class="alert alert-info" role="alert">Wizyta została potwierdzona.</div>';
+		}
+		}
+		?>
 <div class = "ml-2 mr-5 mt-5">
 
 <h3>Potwierdzone Wizyty</h3>
@@ -182,7 +213,7 @@ ORDER BY start_event
 	echo "<td>".$pk['start_event']."</td>";
 	echo "<td>".$pk['end_event']."</td>";
 	echo "<td>".$pk['nazwa_status']."</td>";
-	echo "<td><a href=uwizytyedit.php?id=".$pk['id_wizyta'].">OK</a></td>";
+	echo "<td><a href=ewizytyedit.php?id=".$pk['id_wizyta'].">OK</a></td>";
 	echo "<td><input type=hidden name=id_wizyta value='".$pk['id_wizyta']."'><input type=submit name=submit value=Anuluj></td>";
 	echo "</form>";
 	echo "</tr>";

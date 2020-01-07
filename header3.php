@@ -14,11 +14,11 @@
 		<header>
 		
 		<nav class="nav nav-pills" style="background-color: #f2e9f5;">
-  <a class="nav-item nav-link" href="usersession.php">Moje Konto</a>
-  <a class="nav-item nav-link" href="userpwedit.php">Zmiana Hasła</a>
-  <a class="nav-item nav-link" href="uwizyty.php">Moje Wizyty</a>
-  <a class="nav-item nav-link" href="uarchiwum.php">Archiwum</a>
-  <a class="nav-item nav-link" href="userdelete.php">Usuń Konto</a>
+  <a class="nav-item nav-link" style="color: black;" href="usersession.php">Moje Konto</a>
+  <a class="nav-item nav-link" style="color: black;" href="userpwedit.php">Zmiana Hasła</a>
+  <a class="nav-item nav-link" style="color: black;" href="uwizyty.php">Moje Wizyty</a>
+  <a class="nav-item nav-link" style="color: black;" href="uarchiwum.php">Archiwum</a>
+  <a class="nav-item nav-link" style="color: black;" href="userdelete.php">Usuń Konto</a>
 
 </nav>
 

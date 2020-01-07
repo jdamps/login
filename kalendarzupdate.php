@@ -2,6 +2,7 @@
 
 //update.php
 
+
 $connect = new PDO('mysql:host=localhost;dbname=recepcja1', 'jdamps', 'admin123');
 
 if(isset($_POST["id"]))

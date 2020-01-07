@@ -29,10 +29,43 @@ $eid = $_SESSION['eid'];
 
 
 require "header4.php";
+header ("Location: ./employsession.php?error=permissiondeny");
+		exit();
+}
+
+
+
+
+else if (isset($_SESSION['uid'])) {
+	
+require 'includes/dbh.inc.php';
+
+
+$uid = $_SESSION['uid'];
+
+
+require "header3.php";
+
+header ("Location: ./usersession.php?error=permissiondeny");
+		exit();
 }
 ?>
 
 <main>
+	<?php
+		if (isset($_GET['success'])) {
+			 if ($_GET['success'] == "approved") {
+				echo '<div class="alert alert-info" role="alert">Urlop został potwierdzony.</div>';
+			}
+
+		
+		}
+		if (isset($_GET['success'])) {
+			if ($_GET['success'] == "del") {
+			echo '<div class="alert alert-danger" role="alert">Urlop został usunięty.</div>';
+		}
+		}
+		?>
 <div class = "ml-2 mr-5 mt-5">
 
 <h3>Urlopy</h3>
@@ -144,20 +177,7 @@ ORDER BY start_event"))
 
 ?>
 
-	<?php
-		if (isset($_GET['success'])) {
-			 if ($_GET['success'] == "approved") {
-				echo '<div class="alert alert-info" role="alert">Urlop został potwierdzony.</div>';
-			}
 
-		
-		}
-		if (isset($_GET['success'])) {
-			if ($_GET['success'] == "del") {
-			echo '<div class="alert alert-danger" role="alert">Urlop został usunięty.</div>';
-		}
-		}
-		?>
 
 </div>
 </main>

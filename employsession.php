@@ -2,9 +2,55 @@
 require "header.php";
 ?>
 <?php
+
+if (isset($_SESSION['eid'])) {
+	
+require 'includes/dbh.inc.php';
+
+
+
+$eid = $_SESSION['eid'];
+
+
+mysqli_close($con);
+
 require "header4.php";
+
+
+
+
+}
+else if (isset($_SESSION['uid'])) {
+	
+require 'includes/dbh.inc.php';
+
+
+$uid = $_SESSION['uid'];
+
+
+require "header3.php";
+
+header ("Location: ./usersession.php?error=permissiondeny");
+		exit();
+}
 ?>
 
+
+	<?php
+		if (isset($_GET['error'])) {
+			 if ($_GET['error'] == "permissiondeny") {
+				echo '<div class="alert alert-danger" role="alert">Nie masz dostępu do tej strony.</div>';
+			}
+
+		
+		}
+		else if (isset($_GET['signup'])) {
+			if ($_GET['signup'] == "success") {
+			echo '<div class="alert alert-info" role="alert">Wizyta została potwierdzona.</div>';
+		}
+		}
+		?>
+		
 <main>
 <div class = "mt-3">
 		<div class="container bg-light">
@@ -18,6 +64,8 @@ require 'includes/dbh.inc.php';
 
 
 $eid = $_SESSION['eid'];
+
+
 
 	
 

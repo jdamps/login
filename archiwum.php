@@ -10,7 +10,7 @@ require 'includes/dbh.inc.php';
 
 
 
-$eid = $_SESSION['aid'];
+$aid = $_SESSION['aid'];
 
 
 mysqli_close($con);
@@ -30,8 +30,26 @@ $eid = $_SESSION['eid'];
 
 require "header4.php";
 }
+
+
+else if (isset($_SESSION['uid'])) {
+	
+require 'includes/dbh.inc.php';
+
+
+$uid = $_SESSION['uid'];
+
+
+require "header3.php";
+
+header ("Location: ./usersession.php?error=permissiondeny");
+		exit();
+}
 ?>
 
+
+
+		
 <main>
 <div class = "ml-2 mr-5 mt-2">
 
@@ -39,7 +57,7 @@ require "header4.php";
 
 <br />
 <form action="archiwum.php" method="POST">
-	<input type="text" name="search" placeholder="Klient/Pracownik/Data">
+	<input type="text" name="search" placeholder="Klient/Pracownik">
 	<button type="submit" name="submit-search">Szukaj</button>
 </form>
 <br />
@@ -139,18 +157,20 @@ ORDER BY start_event";
 
 
 	<?php
-		if (isset($_GET['error'])) {
-			 if ($_GET['error'] == "sqlerrorr") {
-				echo '<p>Błąd łączenia z bazą.</p>';
+		if (isset($_GET['success'])) {
+			 if ($_GET['success'] == "del") {
+				echo '<div class="alert alert-info" role="alert">Urlop został usunięty.</div>';
 			}
 
 		
 		}
-		else if (isset($_GET['signup'])) {
-			if ($_GET['signup'] == "success") {
-			echo '<div class="alert alert-info" role="alert">Wizyta została potwierdzona.</div>';
+		else if (isset($_GET['successs'])) {
+			if ($_GET['successs'] == "done") {
+			echo '<div class="alert alert-info" role="alert">Wizyta została zrealizowana.</div>';
 		}
 		}
+		
+	
 		?>
 
 <?php

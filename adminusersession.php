@@ -13,7 +13,7 @@ require 'includes/dbh.inc.php';
 
 
 
-$eid = $_SESSION['aid'];
+$aid = $_SESSION['aid'];
 
 
 mysqli_close($con);
@@ -32,6 +32,21 @@ $eid = $_SESSION['eid'];
 
 
 require "header4.php";
+}
+
+
+else if (isset($_SESSION['uid'])) {
+	
+require 'includes/dbh.inc.php';
+
+
+$uid = $_SESSION['uid'];
+
+
+require "header3.php";
+
+header ("Location: ./usersession.php?error=permissiondeny");
+		exit();
 }
 ?>
 
@@ -56,7 +71,6 @@ require "header4.php";
 			 if ($_GET['error'] == "sqlerrorr") {
 				echo '<p>Błąd łączenia z bazą.</p>';
 			}
-
 		
 		}
 		else if (isset($_GET['success'])) {
@@ -67,12 +81,8 @@ require "header4.php";
 		?>
 
 <?php
-
 require './includes/dbh.inc.php';
-
-
 if ($records=mysqli_query($con,"SELECT * FROM klienci WHERE login_klient!='anonim'"))
-
 	echo "<table class=table>";
 	echo "<tr class=table-secondary>";
 	echo "<th>ID</th>";
@@ -103,18 +113,11 @@ if ($records=mysqli_query($con,"SELECT * FROM klienci WHERE login_klient!='anoni
 	
 	
 }
-
-
-
 ?>
 
 <?php
-
 require './includes/dbh.inc.php';
-
-
 if ($records=mysqli_query($con,"SELECT * FROM klienci WHERE login_klient='anonim'"))
-
 	echo "<table class=table>";
 	
 	echo "<br />";
@@ -133,9 +136,6 @@ if ($records=mysqli_query($con,"SELECT * FROM klienci WHERE login_klient='anonim
 	
 	
 }
-
-
-
 ?>
 
 

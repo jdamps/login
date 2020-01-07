@@ -15,6 +15,20 @@ require 'includes/dbh.inc.php';
 $eid = $_SESSION['eid'];
 require "header4.php";
 }
+
+else if (isset($_SESSION['uid'])) {
+	
+require 'includes/dbh.inc.php';
+
+
+$eid = $_SESSION['uid'];
+
+
+require "header3.php";
+
+header ("Location: ./usersession.php?error=permissiondeny");
+		exit();
+}
 ?>
 <main>
 

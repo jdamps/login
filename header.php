@@ -25,16 +25,16 @@
 		</a> 
 		<ul class="nav">
 		<li class="nav-item">
-		<a class="nav-link" href="index.php">Start</a>
+		<a class="nav-link" style="color: white;" href="index.php">Start</a>
 		</li>
 		<li class="nav-item">
-		<a class="nav-link" href="uslugi.php">Usługi</a>
+		<a class="nav-link" style="color: white;" href="uslugi.php">Usługi</a>
 		</li>
 		<li class="nav-item">
-		<a class="nav-link" href="#">Kontakt</a>
+		<a class="nav-link" style="color: white;" href="#">Kontakt</a>
 		</li>
 		<li class="nav-item">
-		<a class="nav-link" href="#">Regulamin</a>
+		<a class="nav-link" style="color: white;" href="#">Regulamin</a>
 		</li>
 		</ul>
 

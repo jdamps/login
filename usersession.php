@@ -7,9 +7,27 @@ require "header.php";
 ?>
 
 <main>
+
+	<?php
+		if (isset($_GET['error'])) {
+			 if ($_GET['error'] == "permissiondeny") {
+				echo '<div class="alert alert-danger" role="alert">Nie masz dostępu do tej strony.</div>';
+			}
+
+		
+		}
+		else if (isset($_GET['signup'])) {
+			if ($_GET['signup'] == "success") {
+			echo '<div class="alert alert-info" role="alert">Wizyta została potwierdzona.</div>';
+		}
+		}
+		?>
+		
 <div class = "mt-3">
 		<div class="container bg-light">
 		<div class="mx-auto" style="width: 200px;">
+		
+		
 
 <?php
 

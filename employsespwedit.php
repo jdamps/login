@@ -2,7 +2,36 @@
 	require "header.php";
 ?>
 <?php
-	require "header4.php";
+
+if (isset($_SESSION['eid'])) {
+	
+require 'includes/dbh.inc.php';
+
+
+
+$eid = $_SESSION['eid'];
+
+
+mysqli_close($con);
+
+require "header4.php";
+
+
+
+}
+else if (isset($_SESSION['uid'])) {
+	
+require 'includes/dbh.inc.php';
+
+
+$uid = $_SESSION['uid'];
+
+
+require "header3.php";
+
+header ("Location: ./usersession.php?error=permissiondeny");
+		exit();
+}
 ?>
 
 <main>

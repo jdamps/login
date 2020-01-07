@@ -13,7 +13,7 @@ require 'includes/dbh.inc.php';
 
 
 
-$eid = $_SESSION['aid'];
+$aid = $_SESSION['aid'];
 
 
 mysqli_close($con);
@@ -32,6 +32,21 @@ $eid = $_SESSION['eid'];
 
 
 require "header4.php";
+}
+
+
+else if (isset($_SESSION['uid'])) {
+	
+require 'includes/dbh.inc.php';
+
+
+$uid = $_SESSION['uid'];
+
+
+require "header3.php";
+
+header ("Location: ./usersession.php?error=permissiondeny");
+		exit();
 }
 ?>
 <main>

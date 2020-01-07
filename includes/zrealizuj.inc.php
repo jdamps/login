@@ -2,7 +2,7 @@
 
 
 $wizyty=$_POST["idwizyta"];
-echo $wizyty;
+/*echo $wizyty;*/
 
 
 require './dbh.inc.php';
@@ -16,7 +16,7 @@ $sql = "UPDATE wizyty SET id_status=4 WHERE id_wizyta='$_POST[idwizyta]'";
 $records = mysqli_query($con,$sql);
 mysqli_close($con);
 
-header("refresh:0; url=../archiwum.php?success=done");
+header("refresh:0; url=../archiwum.php?successs=done");
 
 }
 				
